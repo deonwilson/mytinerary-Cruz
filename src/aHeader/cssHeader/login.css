@@ -1,0 +1,11 @@
+.headerLogin{
+    width: 50px;
+    background-color: rgb(230, 224, 230);
+    border-radius: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
+.headerLogin img{
+    width: 100%;
+    height: 100%;
+}

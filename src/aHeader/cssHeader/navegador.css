@@ -1,0 +1,39 @@
+.navegador{
+    
+    border-bottom-right-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+    /*   */
+    position: absolute;
+    width: 100% !important;
+    /* background-color: rgba(218, 227, 228, 0.253) !important; */
+    background-color: transparent !important;
+    /* background-color: red !important; */
+}
+.navegadorIcono{
+    width: 100%;
+    border-bottom-right-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+}
+
+.link{
+    display: flex;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    width: 100px;
+
+
+}
+.link a{
+    text-decoration: none;
+    /* background-color: red; */
+    margin-bottom: 5px;
+    color: #fff;
+    
+}
+.link a:hover{
+    color: rgb(231, 179, 110);
+}
+.menuHamburguesa{
+    
+    background-color: rgba(0, 0, 0, 0.712);
+}

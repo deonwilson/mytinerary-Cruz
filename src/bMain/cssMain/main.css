@@ -1,0 +1,51 @@
+main{
+    width: 100%;
+    height: 400px;
+    background-image: url("../imgMain/playa.jpeg");
+    background-size: cover;
+    background-repeat: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.locoMasTitulo{
+    /* background-color: red; */
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.imagenLogo{
+    width: 100px;
+    height: 100px;
+    /* background: red; */
+    margin: auto;
+    margin-bottom: 20px;
+
+}
+.imagenLogo img{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 100px;
+}
+.botonCuidad{
+    text-decoration: none;
+    background-color: rgb(12, 13, 14);
+    padding:10px 20px;
+    border-radius: 50px;
+    color:#fff;
+    
+}
+
+.botonCuidad:hover{
+    text-decoration: none;
+    background-color: rgba(22, 126, 230, 0.719);
+    padding:10px 20px;
+    border-radius: 50px;
+    color:rgb(14, 14, 14);
+    
+}
