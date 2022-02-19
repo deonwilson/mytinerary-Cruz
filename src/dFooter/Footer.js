@@ -1,11 +1,14 @@
 import React from 'react';
 import './cssFooter/footer.css'
+import Ancor from '../aHeader/ancor'
+import Login from '../aHeader/Login'
+
 
 const Footer = () => {
     return ( 
         <footer>
-            <h3>Dale capo estas lento wilson maquetame de una vez rey </h3>
-            <nav></nav>
+            <Ancor/>
+            <Login/>
         </footer>
     );
 }
