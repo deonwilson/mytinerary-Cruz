@@ -10,7 +10,7 @@ const Main = () => {
                     <h1>MyTinerary</h1>
                     <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
                 </div>
-                <a href='/#' className='botonCuidad'> Citiess</a>
+                <a href='/cities' className='botonCuidad'> Cities</a>
                 
             </div>
         </main>

@@ -1,20 +1,22 @@
 import React, {Fragment} from 'react'  /* imr */
-import Header from './aHeader/Header'
-import Main from './bMain/Main'
-import Carousel from './cCorousel/carousel'
-import Footer from './dFooter/Footer'
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './Home/home'
+import Cities from './Cities/cities'
 
 /* sfc */
 function App() {
   return (
     <Fragment>
-      <Header/>
-      <Main/>
-      <Carousel/>
-      <Footer/>
+        <BrowserRouter>
+            <Routes>
+              <Route path='/home' element={<Home/>}/>
+              <Route path='/cities' element={<Cities/>}/>
+            </Routes>
+        </BrowserRouter>
+      
     </Fragment>
   );
 }
 
 export default App;
+
