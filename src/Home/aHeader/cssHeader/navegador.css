@@ -6,7 +6,7 @@
     position: absolute;
     width: 100% !important;
     /* background-color: rgba(218, 227, 228, 0.253) !important; */
-    background-color: transparent !important;
+    
     /* background-color: red !important; */
 }
 .navegadorIcono{
@@ -38,3 +38,4 @@
     
     background-color: rgba(0, 0, 0, 0.712);
 }
+

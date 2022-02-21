@@ -9,12 +9,13 @@ function App() {
     <Fragment>
         <BrowserRouter>
             <Routes>
-              <Route path='/home' element={<Home/>}/>
+              <Route path='/*' element={<Home/>}/>
               <Route path='/cities' element={<Cities/>}/>
             </Routes>
         </BrowserRouter>
       
     </Fragment>
+    
   );
 }
 

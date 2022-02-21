@@ -71,5 +71,6 @@ const cuidades = [
             "nombre": "Tokio"
         }
     ]
+    
 ]
 export default cuidades

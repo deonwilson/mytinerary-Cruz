@@ -14,5 +14,3 @@ const Ancor = () => {
 }
  
 export default Ancor;
-<>
-</>
