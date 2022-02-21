@@ -1,7 +1,7 @@
 import React from 'react';
 /* import ImagenCarousel from './imgCarousel/once.jpeg' */
-import './slice/conImg.css'
-
+import './slice/conImg.css';
+import GenerarBoton from './generarBoton';
 import Generar4Cuidades from './generar4Cuidades';
 
 
@@ -13,9 +13,10 @@ const Carousel = () => {
             <h1 className='tituloCarousel'>Popular MYTINERARIES!</h1>
             <div className="carousel-indicators">                                                              
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                {/* <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> */}
+                <GenerarBoton/>
                 
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div className="carousel-inner">
                     <Generar4Cuidades/>
