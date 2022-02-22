@@ -1,6 +1,8 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './cssMain/main.css'
 import imagenAvion from './imgMain/avion.png'
+
 const Main = () => {
     return ( 
         <main>
@@ -10,7 +12,7 @@ const Main = () => {
                     <h1>MyTinerary</h1>
                     <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
                 </div>
-                <a href='/cities' className='botonCuidad'> Cities</a>
+                <Link to='/cities' className='botonCuidad'> Cities</Link>
                 
             </div>
         </main>

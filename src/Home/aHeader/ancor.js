@@ -1,12 +1,12 @@
 import React,{Fragment} from 'react';
-
+import {Link} from 'react-router-dom'
 const Ancor = () => {
     return ( 
         <Fragment>
             
             <nav className='link'>
-                <a href='/home'>Home</a>
-                <a href='/cities'>Cities</a>
+                <Link to='/home'>Home</Link>
+                <Link to='/cities'>Cities</Link>
             </nav>
             
         </Fragment>

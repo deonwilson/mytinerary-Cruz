@@ -9,8 +9,8 @@ const Generar4Cuidades = () => {
         {cuidades.map((cuidad, index) =>{
             if(index === 0){
                 return (
-                    <Fragment>
-                        <div className="carousel-item active primerContenedor">
+                    
+                        <div className="carousel-item active primerContenedor" key={String((index + 1) )} >
                             <div className='hijo'>
                                 <div className='imgenCuidad'
                                 style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ cuidad[0].imagen})` }}
@@ -36,13 +36,12 @@ const Generar4Cuidades = () => {
                                 </div>
                             </div>     
                         </div>
-                    </Fragment>
                 )
             }
             else{
                 return (
-                    <Fragment>
-                        <div className="carousel-item primerContenedor">
+                    
+                        <div className="carousel-item primerContenedor" key={String(index +1)}>
                             <div className='hijo'>
                                 <div className='imgenCuidad'
                                 style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ cuidad[0].imagen})` }}
@@ -68,7 +67,7 @@ const Generar4Cuidades = () => {
                                 </div>
                             </div>     
                         </div>
-                    </Fragment>
+                    
                 )
             }
 

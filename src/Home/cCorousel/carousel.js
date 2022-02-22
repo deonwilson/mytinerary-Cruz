@@ -11,15 +11,11 @@ const Carousel = () => {
         <div id="carouselExampleIndicators" className="carousel slide contenedorPadre" data-bs-ride="carousel">
 
             <h1 className='tituloCarousel'>Popular MYTINERARIES!</h1>
-            <div className="carousel-indicators">                                                              
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                {/* <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> */}
+            <div className="carousel-indicators">
                 <GenerarBoton/>
-                
             </div>
             <div className="carousel-inner">
-                    <Generar4Cuidades/>
+                    <Generar4Cuidades />
             </div>
             
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
