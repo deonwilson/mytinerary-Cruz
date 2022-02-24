@@ -62,7 +62,7 @@ const cuidades = [
         {
             "id":11,
             "imagen":"tierraDelFuego.jpeg",
-            "nombre": "Land of Fire"
+            "nombre": "Tierra del Fuego"
         },
 
         {
