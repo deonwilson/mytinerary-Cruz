@@ -1,9 +1,9 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES EXTERNAS
-import React, {Fragment, useState, useEffect} from 'react';
-import axios from 'axios'
+import React, {Fragment, useState} from 'react';
+
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES INTERNAS(quiere decir mis componentes)
 import Section from './Section';
-import cuidades from '../Home/json'
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES HOJA DE ESTILOS
 import './cssCities/buscador.css'
@@ -11,17 +11,7 @@ import './cssCities/mainCities.css'
 
 
 const Cities = () => {
-    const [inputBuscador,setBuscador]=useState()
-    const [apidata, setApiData ]= useState([...cuidades])
-    /* useEffect(()=>{
-
-    axios.get(`../Home/json`)
-    .then(response=>setApiData(response))
-
-    },[]) 
-    console.log(apidata) */
-
-  
+    const [inputBuscador,setBuscador]= useState()
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Render
     return ( 
         <Fragment>
@@ -32,7 +22,7 @@ const Cities = () => {
                 className='buscador' type="text" placeholder='O-What is the destination of your dreams?'>
                 </input>
             </main>
-            <Section buscador={inputBuscador} apiInformacion={apidata}/>
+            <Section buscador={inputBuscador}/> 
         </Fragment>
      );
 }
