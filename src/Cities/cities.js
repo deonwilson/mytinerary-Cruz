@@ -1,14 +1,13 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES EXTERNAS
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useState} from 'react';
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES INTERNAS(quiere decir mis componentes)
 import Section from './Section';
-import axios from 'axios';
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES HOJA DE ESTILOS
 import './cssCities/buscador.css'
 import './cssCities/mainCities.css'
-
+import './cssCities/section.css'
 
 const Cities = () => {
     const [inputBuscador,setBuscador]= useState()
