@@ -1,9 +1,9 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES EXTERNAS
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES INTERNAS(quiere decir mis componentes)
 import Section from './Section';
-
+import axios from 'axios';
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES HOJA DE ESTILOS
 import './cssCities/buscador.css'
@@ -30,9 +30,3 @@ const Cities = () => {
 export default Cities;
 
 
-/* useEffect(()=>{
-
-    axios.get(`https://rickandmortyapi.com/api/character/?page=1`)
-      .then(response=>setApi(response))
-    
-    },[]) */

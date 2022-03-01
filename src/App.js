@@ -6,10 +6,12 @@ import Header from './Home/aHeader/Header'
 import AnyCities from './Cities/anyCities'
 
 
+
 /* import Footer from './Home/dFooter/Footer' */
 
 /* sfc */
 function App() {
+            
   return (
     <Fragment>
         <BrowserRouter>
@@ -27,6 +29,4 @@ function App() {
     
   );
 }
-
 export default App;
-
