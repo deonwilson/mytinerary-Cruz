@@ -19,7 +19,7 @@ const Section = (props) => {
         const filtrados = response.data.response.ciudades.filter(ciudad => 
         ciudad.nombre.substring(0,props.buscador.length).toLowerCase().trim() === props.buscador.toLowerCase().trim())
         
-        const render = filtrados.length === 0 ? [{nombre:"Sorry, look for another city that does not exist"}] : filtrados
+        const render = filtrados.length === 0 ? [{nombre:"Sorry, look for another city that does not exist", id:"estatico"}] : filtrados
         setApi(render)
         })
 
@@ -30,7 +30,8 @@ const Section = (props) => {
      <section>
         { 
             
-            api?.map((ciudad, index) => { 
+            api?.map((ciudad, index) => {
+                if(ciudad.id !== "estatico"){
             return(
                 <Link to='/anyCities'  className='imgenCuidadades' key={String(index)}>
                     <div className='imagenFondo' 
@@ -39,6 +40,16 @@ const Section = (props) => {
                     </div>
                 </Link> 
                 )
+            }
+            else{
+                return (
+                    <div className='imgenCuidadades' key={String(index)}>
+                        <div className='imagenFondo' >
+                            <h2>{ciudad.nombre}</h2>
+                        </div>
+                    </div>
+                )
+            }
             
         })
     }    
