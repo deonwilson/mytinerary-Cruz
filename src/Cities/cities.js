@@ -8,6 +8,7 @@ import Section from './Section';
 import './cssCities/buscador.css'
 import './cssCities/mainCities.css'
 import './cssCities/section.css'
+import Footer from '../Home/dFooter/Footer';
 
 const Cities = () => {
     const [inputBuscador,setBuscador]= useState()
@@ -18,10 +19,11 @@ const Cities = () => {
                 <h1>MyTinerary</h1>
                 <input 
                 onKeyUp={(event)=>setBuscador(event.target.value)}
-                className='buscador' type="text" placeholder='O-What is the destination of your dreams?'>
+                className='buscador' type="text" placeholder='O- Search a city'>
                 </input>
             </main>
-            <Section buscador={inputBuscador}/> 
+            <Section buscador={inputBuscador}/>
+            <Footer/>
         </Fragment>
      );
 }

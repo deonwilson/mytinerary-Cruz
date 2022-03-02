@@ -14,7 +14,7 @@ const cuidades = [
         {
             "id":3,
             "imagen":"LasVegas.jpeg",
-            "nombre": "The Vegas"
+            "nombre": "Las Vegas"
         },
         {
             "id":4,

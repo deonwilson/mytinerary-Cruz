@@ -6,8 +6,8 @@ section{
     align-items: center;
 }
 .imgenCuidadades{
-    text-align: none;
-    background-color: violet!important;
+    
+    background-color: rgba(27, 20, 27, 0.404)!important;
     width: 700px;
     height: 300px;
     display: flex;
@@ -15,6 +15,10 @@ section{
     justify-content: center;
     margin-bottom: 20px;
     margin-left: 20px;
+    text-decoration: none;
+    border-radius: 50px !important;
+    
+    
 }
 
 .imagenFondo{
@@ -23,4 +27,7 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50px;
 }

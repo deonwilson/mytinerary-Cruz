@@ -4,6 +4,7 @@ import Home from './Home/home'
 import Cities from './Cities/cities'
 import Header from './Home/aHeader/Header'
 import AnyCities from './Cities/anyCities'
+/* import Footer from './Home/dFooter/Footer' */
 
 
 
@@ -22,7 +23,7 @@ function App() {
               <Route path='/anyCities' element={<AnyCities/>}/>
               <Route path='/*' element={<Home/>}/>
             </Routes>
-            {/* <Footer/> */}
+          {/*   <Footer/> */}
         </BrowserRouter>
       
     </Fragment>

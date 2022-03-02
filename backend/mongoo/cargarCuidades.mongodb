@@ -12,61 +12,93 @@ db.ciudades.insertMany([
 
         {
             "imagen":"barcelona.jpeg",
-            "nombre": "Barcelona"
+            "nombre": "Barcelona",
+            "pais": "España"
         },
 
         {
             "imagen":"buenosAires.jpeg",
-            "nombre": "Buenos Aires"
+            "nombre": "Buenos Aires",
+            "pais": "Argentina"
+
         },
 
         {
             "imagen":"LasVegas.jpeg",
-            "nombre": "The Vegas"
+            "nombre": "The Vegas",
+            "pais": "EE.UU"
         },
 
         {
             "imagen":"MachuPicchu.jpeg",
-            "nombre": "Machu Picchu"
+            "nombre": "Machu Picchu",
+            "pais": "Peru" 
         },
 
         {
             "imagen":"Madrid.jpeg",
-            "nombre": "Madrid"
+            "nombre": "Madrid",
+            "pais": "España"
+
         },
 
         {
             "imagen":"Miami.jpg",
-            "nombre": "Miami"
+            "nombre": "Miami",
+            "pais": "EE.UU"
         },
 
         {
             "imagen":"Mosku.jpeg",
-            "nombre": "Mosku"
+            "nombre": "Mosku",
+            "pais": "Russia"
         },
 
         {
             "imagen":"NewJork.jpeg",
-            "nombre": "New Jork"
+            "nombre": "New Jork",
+            "pais": "EE.UU"
         },
 
         {
             "imagen":"paris.jpeg",
-            "nombre": "Paris"
+            "nombre": "Paris",
+            "pais": "France"
         },
 
         {
             "imagen":"Roma.jpeg",
-            "nombre": "Rome"
+            "nombre": "Rome",
+            "pais": "Italy"
         },
 
         {
             "imagen":"tierraDelFuego.jpeg",
-            "nombre": "Tierra del Fuego"
+            "nombre": "Tierra del Fuego",
+            "pais": "Argentina"
         },
 
         {
             "imagen":"Tokio.jpeg",
-            "nombre": "Tokio"
+            "nombre": "Tokio",
+            "pais": "Japan"
+        },
+        ///12 +3
+        {
+            "imagen":"cordoba.jpeg",
+            "nombre": "Cordoba",
+            "pais": "Argentina"
+        },
+
+        {
+            "imagen":"misiones.jpeg",
+            "nombre": "Misiones",
+            "pais": "Argentina"
+        },
+
+        {
+            "imagen":"rioNegro.jpeg",
+            "nombre": "Rio Negro",
+            "pais": "Argentina"
         }
 ]);

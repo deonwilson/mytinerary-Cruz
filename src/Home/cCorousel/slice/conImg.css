@@ -73,15 +73,17 @@ h2{
     align-items: center;
     margin-bottom: 10px;
     border-radius: 30px;
-    
-}
-.imgenCuidad{
     background-position:center;
+    background-size: cover; 
+    background-repeat: no-repeat;
 }
+
 
 @media (min-width: 600px) {
     .imgenCuidad{
-        background-position:none;
+        background-position:center;
+        background-size: cover; 
+        background-repeat: no-repeat;
     }
     .primerContenedor{
         /* background-color: red; */
@@ -108,13 +110,18 @@ h2{
         align-items: center;
         margin-left: 5px;
         margin-right: 5px;
+        background-position:center;
+        background-size: cover; 
+        background-repeat: no-repeat;
     }
 }
 
 @media (min-width: 800px) {
     
     .imgenCuidad{
-        background-position:-200px;
+        background-position:center;
+        background-size: cover; 
+        background-repeat: no-repeat;
     }
     .contenedorPadre{
         

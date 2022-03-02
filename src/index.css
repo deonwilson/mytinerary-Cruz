@@ -6,8 +6,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #87dae7e3;
+  font-family: cursive;
 }
-
+/* modifiando scrol */
+body::-webkit-scrollbar{
+  width: 10px;
+  background-color: rgba(59, 52, 52, 0.966);
+}
+body::-webkit-scrollbar-thumb{
+  background-color: rgba(48, 152, 160, 0.589);
+  border-radius: 5px;
+  height: 50%;
+}
+/* --------------------- */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

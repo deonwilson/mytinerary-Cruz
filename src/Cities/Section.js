@@ -7,13 +7,12 @@ import {Link} from 'react-router-dom'
 
 const Section = (props) => {
     const [api, setApi] = useState([])
-    console.log(typeof props.buscador)
 
     useEffect(()=>{
         axios.get(`http://localhost:4000/api/ciudades`)
             .then(response => setApi(response.data.response.ciudades))
         },[])
-
+     
     useEffect(()=>{
     axios.get(`http://localhost:4000/api/ciudades`)
         .then(response => {
@@ -22,7 +21,6 @@ const Section = (props) => {
         
         const render = filtrados.length === 0 ? [{nombre:"Sorry, look for another city that does not exist"}] : filtrados
         setApi(render)
-
         })
 
         
@@ -32,14 +30,14 @@ const Section = (props) => {
      <section>
         { 
             
-            api?.map((ciudad, index) => {            
+            api?.map((ciudad, index) => { 
             return(
-                <Link to='/anyCities'  className='imgenCuidadades' key={String(index)}> 
+                <Link to='/anyCities'  className='imgenCuidadades' key={String(index)}>
                     <div className='imagenFondo' 
                         style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ ciudad.imagen})` }}>
                         <h2>{ciudad.nombre}</h2>
                     </div>
-                </Link>
+                </Link> 
                 )
             
         })
