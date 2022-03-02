@@ -8,13 +8,13 @@ const collection = 'ciudades'
 use(database);
 
 //Traemos toda la coleccion
-db.getCollection(collection)
- .find({image:""});
+/* db.getCollection(collection)
+ .find(); */
 
 
  //Buscar un valor dentro de la coleccion
-//db.getCollection(collection)
- // .find({pais:"Argentina"})
+db.getCollection(collection)
+.find({_id: ObjectId("621eb7ce8d1a7ce99923b5e3")})
 
 //Ordenar la consulta ascendente o descendente
 //db.getCollection(collection)
@@ -30,8 +30,8 @@ db.getCollection(collection)
  //.find({edad:{$lte:30}})
 
 //Traer campos especificos 
-//db.getCollection(collection)
-//.find({},{nombre:1,apellido:1})
+/* db.getCollection(collection)
+.find({},{nombre:1,apellido:1,_id:1}) */
 
 //db.getCollection(collection)
   //.find({ edad:{$gte:25,$lte:30}}, {nombre:1,edad:1})

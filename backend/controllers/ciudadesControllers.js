@@ -23,11 +23,12 @@ const ciudadesController = {
     
     cargarCiudad: async(req, res)=>{
         console.log(req.body)
-        const {ciudad, imagen} = req.body.inputNuevoDato
+        const {ciudad, imagen, pais} = req.body.inputNuevoDato
 
         new Ciudades({
             imagen: imagen,
-            ciudad: ciudad
+            ciudad: ciudad,
+            pais: pais
             
         }).save()
         .then(respuesta => res.json({respuesta}))
@@ -42,25 +43,6 @@ const ciudadesController = {
         const id = req.params.id
         const ciudad = req.body.actualCiudad
         let ciudadActualizado = await Ciudades.findByIdAndUpdate({_id:id}, ciudad)
-    },
-    obtenerCuidadID: async (req, res) =>{
-        let ciudadID = req.params.ciudadConID
-        let ciudad
-        let error = null
-        try{
-            ciudad = await Ciudades.find({_id: ciudadID})
-            
-        }catch(err){
-            error = err
-            console.log(error)
-        }
-        res.json({
-            response: error ? 'ERROR' : {ciudad},
-            success: error ? false : true,
-            error : error
-
-        })
-        
     }
     
     

@@ -12,7 +12,6 @@ import AnyCities from './Cities/anyCities'
 
 /* sfc */
 function App() {
-            
   return (
     <Fragment>
         <BrowserRouter>

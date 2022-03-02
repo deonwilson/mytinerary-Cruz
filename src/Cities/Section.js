@@ -12,7 +12,7 @@ const Section = (props) => {
         axios.get(`http://localhost:4000/api/ciudades`)
             .then(response => setApi(response.data.response.ciudades))
         },[])
-     
+        
     useEffect(()=>{
     axios.get(`http://localhost:4000/api/ciudades`)
         .then(response => {
@@ -22,7 +22,6 @@ const Section = (props) => {
         const render = filtrados.length === 0 ? [{nombre:"Sorry, look for another city that does not exist", id:"estatico"}] : filtrados
         setApi(render)
         })
-
         
     },[props.buscador])
     
@@ -31,6 +30,7 @@ const Section = (props) => {
         { 
             
             api?.map((ciudad, index) => {
+                
                 if(ciudad.id !== "estatico"){
             return(
                 <Link to='/anyCities'  className='imgenCuidadades' key={String(index)}>
