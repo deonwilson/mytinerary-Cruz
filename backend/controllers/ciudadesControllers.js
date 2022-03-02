@@ -45,6 +45,5 @@ const ciudadesController = {
         let ciudadActualizado = await Ciudades.findByIdAndUpdate({_id:id}, ciudad)
     }
     
-    
 } //req-requiere res-response
 module.exports = ciudadesController
