@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Home/home'
 import Cities from './Cities/cities'
 import Header from './Home/aHeader/Header'
-import AnyCities from './Cities/anyCities'
+import AnyCities from './anyCiudad/anyCities'
 /* import Footer from './Home/dFooter/Footer' */
 
 
@@ -19,7 +19,7 @@ function App() {
             <Routes>
               <Route path='/home' element={<Home/>}/>
               <Route path='/cities' element={<Cities/>}/>
-              <Route path='/anyCities' element={<AnyCities/>}/>
+              <Route path='/cities/:id' element={<AnyCities/>}/>
               <Route path='/*' element={<Home/>}/>
             </Routes>
           {/*   <Footer/> */}

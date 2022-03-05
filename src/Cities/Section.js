@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import './cssCities/section.css'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link as LinkRouter} from "react-router-dom"
+
 /* import cargarCiudad from '../centralizarAPI/peticionHTTP' */
 /* cargarCiudad({imagen: "soy imagen", ciudad:"Buenos Dias"}) */
 
@@ -19,7 +20,7 @@ const Section = (props) => {
         const filtrados = response.data.response.ciudades.filter(ciudad => 
         ciudad.nombre.substring(0,props.buscador.length).toLowerCase().trim() === props.buscador.toLowerCase().trim())
         
-        const render = filtrados.length === 0 ? [{nombre:"Sorry, look for another city that does not exist", id:"estatico"}] : filtrados
+        const render = filtrados.length === 0 ? [{nombre:"Oops! We don't have any city or country that matches your search! your search!", id:"estatico"}] : filtrados
         setApi(render)
         })
         
@@ -32,13 +33,16 @@ const Section = (props) => {
             api?.map((ciudad, index) => {
                 
                 if(ciudad.id !== "estatico"){
+                    //<LinkRouter >
             return(
-                <Link to='/anyCities'  className='imgenCuidadades' key={String(index)}>
+                
+                
+                <LinkRouter to={ciudad._id}  className='imgenCuidadades' key={String(index)}>
                     <div className='imagenFondo' 
                         style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ ciudad.imagen})` }}>
                         <h2>{ciudad.nombre}</h2>
                     </div>
-                </Link> 
+                </LinkRouter> 
                 )
             }
             else{

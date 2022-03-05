@@ -36,3 +36,14 @@ const actualizarCiudad = async (id, actualCiudad) => {
  
 export default actualizarCiudad;
 
+const obtenerCiudadID = async(id) =>{
+    try{
+        let unaCiudad = await axios.get(`http://localhost:4000/api/ciudades/${id}` )
+        return unaCiudad
+    }
+    catch(error){
+        throw error
+    }
+}
+export default obtenerCiudadID
+

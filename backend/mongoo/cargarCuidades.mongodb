@@ -32,7 +32,7 @@ db.ciudades.insertMany([
         {
             "imagen":"MachuPicchu.jpeg",
             "nombre": "Machu Picchu",
-            "pais": "Peru" 
+            "pais": "Peru"
         },
 
         {
@@ -59,7 +59,6 @@ db.ciudades.insertMany([
             "nombre": "New Jork",
             "pais": "EE.UU"
         },
-
         {
             "imagen":"paris.jpeg",
             "nombre": "Paris",

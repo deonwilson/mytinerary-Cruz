@@ -8,13 +8,12 @@ const collection = 'ciudades'
 use(database);
 
 //Traemos toda la coleccion
-/* db.getCollection(collection)
- .find(); */
+db.getCollection(collection)
+.find({_id:ObjectId("621f950a246015e65e09d9e3")});
 
 
  //Buscar un valor dentro de la coleccion
-db.getCollection(collection)
-.find({_id: ObjectId("621eb7ce8d1a7ce99923b5e3")})
+
 
 //Ordenar la consulta ascendente o descendente
 //db.getCollection(collection)
