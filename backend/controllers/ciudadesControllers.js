@@ -1,5 +1,5 @@
 const Ciudades = require("../models/cuidades")
-/* const mongose = require("mongoose").mongo */
+
 
 const ciudadesController = {
     
@@ -70,3 +70,4 @@ const ciudadesController = {
     
 } //req-requiere res-response
 module.exports = ciudadesController
+

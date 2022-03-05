@@ -18,6 +18,13 @@ const AnyCities = () => {
                 )
     },[])
 
+    useEffect(()=>{
+        axios.get(`http://localhost:4000/api/itinerarios`)
+            .then(response => 
+                console.log(response.data.response)
+            )
+    },[])
+
     return (
             <>  {ciudad.map((unaCiudad, index)=>
                 (
