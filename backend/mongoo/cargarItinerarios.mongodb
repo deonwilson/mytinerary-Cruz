@@ -1,0 +1,27 @@
+// MongoDB Playground
+//https://docs.mongodb.com/manual/crud/
+const database = 'myTynerary';
+
+
+
+use(database);
+
+// The drop() command destroys all data from a collection.
+db.itinerarios.drop();
+// Inserta los documentos que nosotros le indiquemos.
+db.itinerarios.insertMany([
+
+        {
+            "nombre":"Barcelona",
+            "itinerario":{
+                "foto":"alguna foto",
+                "nombre":"El CHAPI",
+                "price":5, // 0< x <= 5 billetes
+                "duration": 20,
+                "likes": 0,
+                "hashtags":["#ejemploUno", "#EjemploDos", "#EjemploTres"],
+                "comments":"che wilson hoy la rompemos te dejo el procedimiento de este sabado: partido 3pm -> asado en casa -> tipo 10 empezamos la previa-> 1 am vamos al baile" 
+            }
+
+        }
+]);
