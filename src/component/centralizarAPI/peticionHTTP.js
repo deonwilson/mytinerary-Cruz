@@ -1,4 +1,4 @@
-import axios from 'axios';
+/* import axios from 'axios';
 
 const cargarCiudad = async (inputNuevoDato) => {
     try{
@@ -45,5 +45,7 @@ const obtenerCiudadID = async(id) =>{
         throw error
     }
 }
-export default obtenerCiudadID
+export default obtenerCiudadID */
+
+
 

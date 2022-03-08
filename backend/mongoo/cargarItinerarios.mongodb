@@ -12,7 +12,7 @@ db.itinerarios.drop();
 db.itinerarios.insertMany([
 
         {
-            "nombre":"Barcelona",
+            "ciudad":"Barcelona",
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"El CHAPI",
@@ -25,7 +25,7 @@ db.itinerarios.insertMany([
 
         },
         {
-            "nombre":"Buenos Aires",
+            "ciudad":"Buenos Aires",
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"Nombre X",
@@ -38,7 +38,7 @@ db.itinerarios.insertMany([
 
         },
         {
-            "nombre":"Barcelona",
+            "ciudad":"Barcelona",
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"Nombre Y",
@@ -51,7 +51,7 @@ db.itinerarios.insertMany([
 
         },
         {
-            "nombre":"Buenos Aires",
+            "ciudad":"Buenos Aires",
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"Nombre Z",
@@ -64,7 +64,7 @@ db.itinerarios.insertMany([
 
         },
         {
-            "nombre":"Barcelona",
+            "ciudad":"Barcelona",
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"Nombre W",
@@ -77,7 +77,7 @@ db.itinerarios.insertMany([
 
         },
         {
-            "nombre":"Buenos Aires",
+            "ciudad":"Buenos Aires",
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"El CHAPI",

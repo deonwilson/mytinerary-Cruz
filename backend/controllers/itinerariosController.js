@@ -23,8 +23,8 @@ const itinerariosController = {
     },
     
     cargarItinerario: async(req, res)=>{
-        const {ciudad, itinerarios} = req.body.inputNuevoDato
-        const {foto, nombre, price, duration, likes, hashtags, comments} = itinerarios
+        const {ciudad, itinerario} = req.body.inputNuevoDato
+        const {foto, nombre, price, duration, likes, hashtags, comments} = itinerario
         new Itinerarios({
             ciudad: ciudad,
             itinerario: {
@@ -53,20 +53,20 @@ const itinerariosController = {
     },
 
     obtenerItinerarioID: async (req, res) =>{
-        let ciudadID = req.params.id
-        console.log(ciudadID)
-        let unaCiudad 
+        let itinerarioID = req.params.id
+        console.log(itinerarioID)
+        let unItinerario 
         let error = null
         
         try{
-            unaCiudad = await Itinerarios.findOne({_id:ciudadID})
-            console.log(unaCiudad)
+            unItinerario = await Itinerarios.findOne({_id:itinerarioID})
+            console.log(unItinerario)
         }catch(err){
             error = err
             console.log(error)
         }
         res.json({
-            response: error ? 'ERROR' : [unaCiudad],
+            response: error ? 'ERROR' : [unItinerario],
             success: error ? false : true,
             error : error
         })

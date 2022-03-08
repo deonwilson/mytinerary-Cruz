@@ -1,33 +1,38 @@
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES EXTERNAS
-import React, {Fragment, useState} from 'react';
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES INTERNAS(quiere decir mis componentes)
+//externas
+import React, {Fragment} from 'react';
+import { useDispatch} from 'react-redux';
+//internas
 import Section from './Section';
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IMPORTACIONES HOJA DE ESTILOS
+import {obtenerCiudades} from '../../redux/ciudades'
+//estilos
 import './cssCities/buscador.css'
 import './cssCities/mainCities.css'
 import './cssCities/section.css'
 import Footer from '../Home/dFooter/Footer';
 
 const Cities = () => {
-    const [inputBuscador,setBuscador]= useState()
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Render
+    
+    const dispatch =useDispatch()
+    
+    console.log("sdsad")
+
     return ( 
         <Fragment>
             <main className='mainCities'>
                 <h1>MyTinerary</h1>
                 <input 
-                onKeyUp={(event)=>setBuscador(event.target.value)}
+                onKeyUp={(event) => dispatch(obtenerCiudades(event.target.value))}
                 className='buscador' type="text" placeholder='O- Search a city'>
                 </input>
             </main>
-            <Section buscador={inputBuscador}/>
+            <Section/>
             <Footer/>
         </Fragment>
      );
 }
  
 export default Cities;
+
+
 
 

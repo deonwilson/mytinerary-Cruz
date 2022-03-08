@@ -1,47 +1,29 @@
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
 import './cssCities/section.css'
-import axios from 'axios'
+
 import {Link as LinkRouter} from "react-router-dom"
+import {useSelector, useDispatch} from 'react-redux';
+//interna
+import {obtenerCiudades} from '../../redux/ciudades'
 
-/* import cargarCiudad from '../centralizarAPI/peticionHTTP' */
-/* cargarCiudad({imagen: "soy imagen", ciudad:"Buenos Dias"}) */
-
-const Section = (props) => {
-    const [api, setApi] = useState([])
-
+const Section = () => {
+    const ciudades = useSelector(state=> state.ciudades.array)
+    const dispatch = useDispatch()
     useEffect(()=>{
-        axios.get(`http://localhost:4000/api/ciudades`)
-            .then(response => setApi(response.data.response.ciudades))
-        },[])
-        
-    useEffect(()=>{
-    axios.get(`http://localhost:4000/api/ciudades`)
-        .then(response => {
-        const filtrados = response.data.response.ciudades.filter(ciudad => 
-        ciudad.nombre.substring(0,props.buscador.length).toLowerCase().trim() === props.buscador.toLowerCase().trim())
-        
-        const render = filtrados.length === 0 ? [{nombre:"Oops! We don't have any city or country that matches your search! your search!", id:"estatico"}] : filtrados
-        setApi(render)
-        })
-        
-    },[props.buscador])
-    
+        dispatch(obtenerCiudades(""))
+    },[])
     return ( 
      <section>
-        { 
-            
-            api?.map((ciudad, index) => {
-                
+        {
+            ciudades?.map((ciudad, index) => {
                 if(ciudad.id !== "estatico"){
-                    //<LinkRouter >
             return(
-                
-                
                 <LinkRouter to={ciudad._id}  className='imgenCuidadades' key={String(index)}>
                     <div className='imagenFondo' 
                         style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ ciudad.imagen})` }}>
                         <h2>{ciudad.nombre}</h2>
                     </div>
+                    
                 </LinkRouter> 
                 )
             }

@@ -48,13 +48,11 @@ const ciudadesController = {
 
     obtenerCuidadID: async (req, res) =>{
         let ciudadID = req.params.id
-        console.log(ciudadID)
         let unaCiudad 
         let error = null
         
         try{
             unaCiudad = await Ciudades.findOne({_id:ciudadID})
-            console.log(unaCiudad)
         }catch(err){
             error = err
             console.log(error)
