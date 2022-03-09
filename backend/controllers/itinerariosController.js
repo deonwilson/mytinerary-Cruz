@@ -79,14 +79,14 @@ const itinerariosController = {
         let error = null
         
         try{
-            itinerarios = await Itinerarios.findOne({ciudad:ciudadId})
+            itinerarios = await Itinerarios.find({ciudad:ciudadId}).limit(2)
             console.log(itinerarios)
         }catch(err){
             error = err
             console.log(error)
         }
         res.json({
-            response: error ? 'ERROR' : [itinerarios],
+            response: error ? 'ERROR' : itinerarios,
             success: error ? false : true,
             error : error
         })

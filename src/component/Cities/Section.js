@@ -4,7 +4,7 @@ import './cssCities/section.css'
 import {Link as LinkRouter} from "react-router-dom"
 import {useSelector, useDispatch} from 'react-redux';
 //interna
-import {obtenerCiudades} from '../../redux/ciudades'
+import {obtenerCiudades} from '../../redux/ciudades/ciudades'
 
 const Section = () => {
     const ciudades = useSelector(state=> state.ciudades.array)

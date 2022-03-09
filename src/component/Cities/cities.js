@@ -3,7 +3,7 @@ import React, {Fragment} from 'react';
 import { useDispatch} from 'react-redux';
 //internas
 import Section from './Section';
-import {obtenerCiudades} from '../../redux/ciudades'
+import {obtenerCiudades} from '../../redux/ciudades/ciudades'
 //estilos
 import './cssCities/buscador.css'
 import './cssCities/mainCities.css'

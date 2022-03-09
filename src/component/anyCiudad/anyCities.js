@@ -6,7 +6,6 @@ import axios from 'axios'
 import Itinerarios from './itinerarios'
 //estilos
 
-
 const AnyCities = () => {
     const {id} = useParams()
     const [ciudad, setCiudad] = useState([])
@@ -18,19 +17,12 @@ const AnyCities = () => {
                 )
     },[])
 
-    useEffect(()=>{
-        axios.get(`http://localhost:4000/api/itinerarios`)
-            .then(response => 
-                console.log(response.data.response)
-            )
-    },[])
-
     return (
             <>  {ciudad.map((unaCiudad, index)=>
                 (
                 <div key={index}>
                     <main className='mainCities' style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ unaCiudad.imagen})` }}>
-                        <Link to='/cities' className='botonCuidad'> Cities</Link>
+                        <Link to='/cities' className='botonCuidad'>Cities</Link>
                         <h2 style={{textAlign:"center"}}>{unaCiudad.nombre}</h2>
                         <p>For more information about the itineraries of this city. Scroll a little further down to see all the info.</p>
                     </main>

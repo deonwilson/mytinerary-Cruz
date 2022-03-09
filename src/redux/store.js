@@ -3,10 +3,12 @@ import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 
 //reducer
-import ciudadReducer from './ciudades'
+import ciudadReducer from './ciudades/ciudades'
+import itinerarioReducer from './itinerario/itinerarioReducer'
 
 const rootReducer = combineReducers({
-    ciudades: ciudadReducer
+    ciudades: ciudadReducer,
+    itinerarioMain: itinerarioReducer
     /* usuarios: usuariosReducer,
      */
 })
