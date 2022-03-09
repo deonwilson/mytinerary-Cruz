@@ -24,26 +24,34 @@ const ciudadesController = {
     },
     
     cargarCiudad: async(req, res)=>{
-        const {ciudad, imagen, pais} = req.body.inputNuevoDato
-
+        const {imagen, nombre, pais} = req.body.dataInput
         new Ciudades({
             imagen: imagen,
-            ciudad: ciudad,
+            nombre: nombre,
             pais: pais
-            
         }).save()
-        .then(respuesta => res.json({respuesta}))
+        .then((respuesta) => res.json({respuesta}))
     },
 
     eliminarCiudad: async(req, res) =>{
         const id = req.params.id
         await Ciudades.findOneAndDelete({_id:id})
+        .then((respuesta)=> res.json({respuesta}))
     },
-
     actualizarCiudad: async(req, res)=>{
         const id = req.params.id
-        const ciudad = req.body.actualCiudad
-        let ciudadActualizado = await Ciudades.findByIdAndUpdate({_id:id}, ciudad)
+        const ciudad = req.body.dataInput
+        console.log(req.body.dataInput)
+        let ciudadActualizado = await Ciudades.findOneAndReplace({_id:id}, ciudad)
+        .then((respuesta)=> res.json({respuesta}))
+
+        /* 
+        const id = req.params.id
+        const ciudad = req.body.dataInput
+
+        let ciudadb = await Ciudades.findOneAndUpdate({_id:id}, ciudad)
+         console.log(ciudadb)
+        */
     },
 
     obtenerCuidadID: async (req, res) =>{
@@ -55,7 +63,6 @@ const ciudadesController = {
             unaCiudad = await Ciudades.findOne({_id:ciudadID})
         }catch(err){
             error = err
-            console.log(error)
         }
         res.json({
             response: error ? 'ERROR' : [unaCiudad],
@@ -65,6 +72,7 @@ const ciudadesController = {
         
     }
     
+
     
 } //req-requiere res-response
 module.exports = ciudadesController

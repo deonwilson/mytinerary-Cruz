@@ -23,7 +23,7 @@ const itinerariosController = {
     },
     
     cargarItinerario: async(req, res)=>{
-        const {ciudad, itinerario} = req.body.inputNuevoDato
+        const {ciudad, itinerario} = req.body.dataInput
         const {foto, nombre, price, duration, likes, hashtags, comments} = itinerario
         new Itinerarios({
             ciudad: ciudad,
@@ -44,29 +44,49 @@ const itinerariosController = {
     eliminarItinerario: async(req, res) =>{
         const id = req.params.id
         await Itinerarios.findOneAndDelete({_id:id})
+        .then((respuesta)=> res.json({respuesta}))
     },
 
     actualizarItinerario: async(req, res)=>{
         const id = req.params.id
-        const ciudad = req.body.actualCiudad
-        let ciudadActualizado = await Itinerarios.findByIdAndUpdate({_id:id}, ciudad)
+        const itinerario = req.body.dataInput
+        let ciudadActualizado = await Itinerarios.findOneAndReplace({_id:id}, itinerario)
+        .then((respuesta)=> res.json({respuesta}))
     },
 
     obtenerItinerarioID: async (req, res) =>{
         let itinerarioID = req.params.id
-        console.log(itinerarioID)
         let unItinerario 
         let error = null
         
         try{
             unItinerario = await Itinerarios.findOne({_id:itinerarioID})
-            console.log(unItinerario)
+        }catch(err){
+            error = err
+        }
+        res.json({
+            response: error ? 'ERROR' : {unItinerario},
+            success: error ? false : true,
+            error : error
+        })
+        
+    },
+
+    obtenerItinerariosPorCiudad: async (req, res) =>{
+        let ciudadId = req.params.idCiudad
+        console.log(ciudadId)
+        let itinerarios 
+        let error = null
+        
+        try{
+            itinerarios = await Itinerarios.findOne({ciudad:ciudadId})
+            console.log(itinerarios)
         }catch(err){
             error = err
             console.log(error)
         }
         res.json({
-            response: error ? 'ERROR' : [unItinerario],
+            response: error ? 'ERROR' : [itinerarios],
             success: error ? false : true,
             error : error
         })
