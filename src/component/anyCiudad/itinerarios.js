@@ -27,11 +27,12 @@ const Itinerario = () => {
         { itinerariosActuales?.map((unItinerario, index) =>
         
         <section className='sectionItinerario' key={String(index)}>
-            <h3 className='caja uno'>Subtitulo de ejemplo asd</h3>
+            {/* <h3 className='caja uno'>Subtitulo de ejemplo asd</h3> */}
             
             <div className='caja dos'> 
-                <div className='logoItinerario'>
-                    {unItinerario.itinerario.foto}
+                <div className='logoItinerario'
+                style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenesItinerarios/`+ unItinerario.itinerario.foto})` }}
+                >
                 </div> 
 
                 <div className='detalle'>

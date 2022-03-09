@@ -11,7 +11,7 @@ db.itinerarios.drop();
 // Inserta los documentos que nosotros le indiquemos.
 db.itinerarios.insertMany([
 
-        {
+        { 
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"El CHAPI",
@@ -22,8 +22,8 @@ db.itinerarios.insertMany([
                 "comments":"che wilson hoy la rompemos te dejo el procedimiento de este sabado: partido 3pm -> asado en casa -> tipo 10 empezamos la previa-> 1 am vamos al baile" 
             }
 
-        },
-        {
+        }
+ /*        {
             "itinerario":{
                 "foto":"alguna foto",
                 "nombre":"Nombre X",
@@ -82,5 +82,5 @@ db.itinerarios.insertMany([
                 "comments":"che wilson hoy la rompemos te dejo el procedimiento de este sabado: partido 3pm -> asado en casa -> tipo 10 empezamos la previa-> 1 am vamos al baile" 
             }
 
-        }
+        } */
 ]);
