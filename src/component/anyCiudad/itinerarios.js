@@ -1,31 +1,27 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom'
 import './cssAnyCities/itinerario.css'
 import {desplegarItinerario} from '../../redux/itinerario/itinerarioReducer'
-import ComentActividad from './ComentActivi'
+import ComentActividadPar from './ComentActivi'
+import ComentActividadInpar from './ComentActividadInpar'
 const Itinerario = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
     const itinerariosActuales = useSelector(state => state.itinerarioMain.itinerario)
-    console.log(itinerariosActuales)
+    /* console.log(itinerariosActuales.length) */
+
     useEffect(()=>{
         dispatch(desplegarItinerario(id))
     },[])
-    console.log(itinerariosActuales)
-    function imprimirBilletes(unNumero){
-        let lista= []
-        for(let cont=0; cont < unNumero; cont ++){
-            lista.push(cont)
-        }
-        return lista
-    }
+    /* console.log(itinerariosActuales) */
+    
     
     return ( 
 
         <>
-        { itinerariosActuales?.map((unItinerario, index) =>
-        
+        {   itinerariosActuales.length ===0 ? <div className='noItinerarios'><h4>Itineraries not found for this city. Be the first one!</h4></div>:
+            itinerariosActuales.map((unItinerario, index) => 
         <section className='sectionItinerario' key={String(index)}>
             {/* <h3 className='caja uno'>Subtitulo de ejemplo asd</h3> */}
             
@@ -44,14 +40,28 @@ const Itinerario = () => {
                         <p>Duration: {unItinerario.itinerario.duration} horas</p>
                     </div>
                     <div className='detalleTres'>
-                        <p>{unItinerario.itinerario.likes}👍</p>
-                        {unItinerario.itinerario.hashtags.map((unHashtags,indexxx)=><p key={indexxx}>{unHashtags}</p> )}
+                        {unItinerario.itinerario.hashtags.map((unHashtags,indexxx)=><p className="unHashtags"key={indexxx}>{unHashtags}</p> )}
+                        <p className='meGusta'>{unItinerario.itinerario.likes}👍</p>
                     </div>
                 </div>
             </div>
-            <ComentActividad/>
+            {
+                [1].map(eleme=>{
+                    if(index+2%2===0){
+                        return(
+                            <ComentActividadPar key={index}/>
+                        )
+                    }else{
+                       return(
+                        <ComentActividadInpar key={index}/>
+                       )
+                    }
+                } )
+            }
         </section>
+        
         )
+        
         }
         </>
 
@@ -59,3 +69,20 @@ const Itinerario = () => {
 }
  
 export default Itinerario;
+
+
+const imprimirBilletes= unNumero =>{
+    let lista= []
+    for(let cont=0; cont < unNumero; cont ++){
+        lista.push(cont)
+    }
+    return lista
+}
+
+/* function imprimirBilletes(unNumero){
+    let lista= []
+    for(let cont=0; cont < unNumero; cont ++){
+        lista.push(cont)
+    }
+    return lista
+} */

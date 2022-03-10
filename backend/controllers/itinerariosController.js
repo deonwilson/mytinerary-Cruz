@@ -74,13 +74,12 @@ const itinerariosController = {
 
     obtenerItinerariosPorCiudad: async (req, res) =>{
         let ciudadId = req.params.idCiudad
-        console.log(ciudadId)
         let itinerarios 
         let error = null
         
         try{
             itinerarios = await Itinerarios.find({ciudad:ciudadId}).limit(2)
-            console.log(itinerarios)
+            
         }catch(err){
             error = err
             console.log(error)

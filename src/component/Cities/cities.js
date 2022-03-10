@@ -8,14 +8,11 @@ import {obtenerCiudades} from '../../redux/ciudades/ciudades'
 import './cssCities/buscador.css'
 import './cssCities/mainCities.css'
 import './cssCities/section.css'
-import Footer from '../Home/dFooter/Footer';
+/* import Footer from '../Home/dFooter/Footer'; */
 
 const Cities = () => {
     
     const dispatch =useDispatch()
-    
-    console.log("sdsad")
-
     return ( 
         <Fragment>
             <main className='mainCities'>
@@ -26,7 +23,7 @@ const Cities = () => {
                 </input>
             </main>
             <Section/>
-            <Footer/>
+            {/* <Footer/> */}
         </Fragment>
      );
 }

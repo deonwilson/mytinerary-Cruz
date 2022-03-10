@@ -4,10 +4,8 @@ import Home from './component/Home/home'
 import Cities from './component/Cities/cities'
 import Header from './component/Home/aHeader/Header'
 import AnyCities from './component/anyCiudad/anyCities'
-/* import Footer from './Home/dFooter/Footer' */
 
-
-/* import Footer from './Home/dFooter/Footer' */
+import Footer from './component/Home/dFooter/Footer'
 //usando redux
 import {Provider} from 'react-redux'
 import generateStore from './redux/store'
@@ -27,7 +25,7 @@ function App() {
               <Route path='/cities/:id' element={<AnyCities/>}/>
               <Route path='/*' element={<Home/>}/>
             </Routes>
-          {/*   <Footer/> */}
+            <Footer/>
         </BrowserRouter>
         
       </Provider>

@@ -4,21 +4,23 @@ import {useParams, Link} from 'react-router-dom'
 import axios from 'axios'
 //importaciones interna
 import Itinerarios from './itinerarios'
+import {desplegarCiudadRItinerario} from '../../redux/itinerario/itinerarioReducer'
+import { useDispatch, useSelector } from 'react-redux';
 //estilos
 
 const AnyCities = () => {
     const {id} = useParams()
-    const [ciudad, setCiudad] = useState([])
-    console.log(ciudad)
+    
+    const dispatch= useDispatch()
+    const ciudadRItinerario= useSelector(state=>state.itinerarioMain.ciudadRItinerario)
+    /* console.log(ciudadRItinerario) */
+
     useEffect(()=>{
-            axios.get(`http://localhost:4000/api/ciudades/${id}`)
-                .then(response => 
-                    setCiudad(response.data.response)
-                )
+        dispatch(desplegarCiudadRItinerario(id))
     },[])
 
     return (
-            <>  {ciudad.map((unaCiudad, index)=>
+            <>  {ciudadRItinerario.map((unaCiudad, index)=>
                 (
                 <div key={index}>
                     <main className='mainCities' style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/imagenes/`+ unaCiudad.imagen})` }}>
