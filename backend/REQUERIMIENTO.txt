@@ -1,0 +1,15 @@
+A nivel backend: se deben crear los endpoints y controladores de
+crear cuenta y loguear usuario y por supuesto, el modelo. 
+
+En el caso de crear cuenta la request debe pasar antes por un
+validador hecho con Joi (no exagerar en las condiciones de
+validación pero tampoco obviarlas ni poner 1 o 2). Atención al
+email (debe ser único ya que actúa como USERNAME y debe
+tener formato de email) y la password. Los países pueden estar
+hardcodeados en un array o alimentarse de alguna api de países.
+Como mínimo debe haber 8 países para elegir y la creación de
+"options" debe ser dinámica. Al loguearse, el backend debe
+enviar al frontend un token (usando JWT y Passport). No hay
+roles, se puede agregar como un extra.
+Atención al tema password en Google... ver cuáles pueden ser
+las opciones disponibles para solventar este tema.

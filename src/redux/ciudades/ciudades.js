@@ -25,6 +25,7 @@ export default function ciudadReducer(state=dataInicial, action){
 //acciones
 
 export const obtenerCiudades = (teclaBuscador) => async (dispatch, getState) =>{
+
     try{
         /* console.log(getState().ciudades.input) */
         const resp = await axios.get('http://localhost:4000/api/ciudades')

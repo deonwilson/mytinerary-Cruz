@@ -1,0 +1,16 @@
+//Criterio adicional
+Debe haber un call to action para que, si el usuario NO TIENE
+UNA CUENTA, se la vaya a crear.
+Cada cambio de estado (logueado-deslogueado) debe cambiar
+las opciones disponibles en los menúes y el estado se debe
+perdurar a través de localStorage para no perder el estado de
+logueado en caso de hacer F5. También, al cambiar de estado,
+deben cambiar aquellas páginas que el usuario tiene disponibles
+para ver (aunque en el caso de Mytinerary, un usuario no
+logueado puede hacer y ver todo, excepto comentar y likear,
+pero para ejercitar protección de rutas de frontend, no
+permitamos el acceso a signup/login a usuarios logueados).
+Deben hacer una validación mínima via frontend antes de enviar
+los datos al backend.
+Mostrar mensajes de error personalizados, claros,
+atractivos y amigables.

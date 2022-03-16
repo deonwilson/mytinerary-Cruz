@@ -13,6 +13,7 @@ import './cssCities/section.css'
 const Cities = () => {
     
     const dispatch =useDispatch()
+ 
     return ( 
         <Fragment>
             <main className='mainCities'>
@@ -21,6 +22,7 @@ const Cities = () => {
                 onKeyUp={(event) => dispatch(obtenerCiudades(event.target.value))}
                 className='buscador' type="text" placeholder='O- Search a city'>
                 </input>
+                {/* <button onClick={()=>window.scroll(0, 400)}>asd</button> */}
             </main>
             <Section/>
             {/* <Footer/> */}

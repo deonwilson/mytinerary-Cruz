@@ -4,6 +4,7 @@ import './cssMain/main.css'
 import imagenAvion from './imgMain/avion.png'
 
 const Main = () => {
+    
     return ( 
         <main>
             <div className='locoMasTitulo'>
@@ -13,7 +14,6 @@ const Main = () => {
                     <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
                 </div>
                 <Link to='/cities' className='botonCuidad'> Cities</Link>
-                
             </div>
         </main>
      );
