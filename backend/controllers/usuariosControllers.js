@@ -1,5 +1,44 @@
 const Usuarios = require('../models/usuarios')
 const bcryptjs = require('bcryptjs')
+const crypto = require('crypto')        
+const nodemailer = require('nodemailer') 
+//funciones auxiliares
+const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR EL EMAIL
+
+    const transporter = nodemailer.createTransport({ //DEFINIMOS EL TRASPORTE UTILIZANDO NODEMAILER
+        host: 'smtp.gmail.com',         //DEFINIMOS LO PARAMETROS NECESARIOS
+        port: 465,
+        secure: true,
+        auth: {
+            user: "EmpresaChapi@gmail.com",    //DEFINIMOS LOS DATOS DE AUTORIZACION DE NUESTRO PROVEEDOR DE
+            pass: "123456789chapi"                          //COREO ELECTRONICO, CONFIGURAR CUAENTAS PARA PERMIR EL USO DE APPS
+        }                                               //CONFIGURACIONES DE GMAIL
+    })
+
+    // EN ESTA SECCION LOS PARAMETROS DEL MAIL 
+    let sender = "chapi@gmail.com"  
+    let mailOptions = { 
+        from: sender,    //DE QUIEN
+        to: email,       //A QUIEN
+        subject: "Verificacion de email usuario ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
+        html: `
+        <div >
+        <h1 style="color:red">Presiona <a href=http://localhost:4000/api/verify/${uniqueString}>aqui</a> para confirma tu email. Gracias </h1>
+        </div>
+        `
+    
+    };
+
+    await transporter.sendMail(mailOptions, function (error, response) { //SE REALIZA EL ENVIO
+        if (error) { console.log(error) }
+        else {
+            console.log("Mensaje enviado")
+
+        }
+    })
+};
+
+//controladores
 const UsuariosController = {
 
     registrarse: async(req, res)=>{ // req.body.dataUsuario
@@ -18,8 +57,10 @@ const UsuariosController = {
                     usuarioExiste.contrasenia.push(encripatacionContrasenia) 
                     if(from === "form-Signup"){ 
                         //PORSTERIORMENTE AGREGAREMOS LA VERIFICACION DE EMAIL
+                        usuarioExiste.uniqueString = crypto.randomBytes(15).toString('hex')
                         await usuarioExiste.save()
-    
+                        await sendEmail(email, usuarioExiste.uniqueString)
+                        
                     res.json({
                         success: true, 
                         from:"signup", //RESPONDE CON EL TOKEN Y EL NUEVO USUARIO
@@ -45,7 +86,8 @@ const UsuariosController = {
                     contrasenia:[contraEncriptada],
                     foto,
                     pais,
-                    emailVerificado:true,
+                    uniqueString:crypto.randomBytes(15).toString('hex'),
+                    emailVerificado:false,
                     from:[from]
                 
                 })
@@ -63,6 +105,7 @@ const UsuariosController = {
                     //PASAR EMAIL VERIFICADO A FALSE
                     //ENVIARLE EL E MAIL PARA VERIFICAR
                     await nuevoUsuario.save()
+                    await sendEmail(email, nuevoUsuario.uniqueString)
     
                     res.json({
                         success: true, 
@@ -159,7 +202,22 @@ const UsuariosController = {
         const user = await Usuarios.findOne({ email })
         await user.save()
         res.json(console.log('sesion cerrada ' + email))
-    }
+    },
+     
+    verificarEmail: async (req, res) => {
+
+        const { uniqueString } = req.params; //EXTRAE EL EL STRING UNICO DEL LINK
+
+        const user = await Usuarios.findOne({ uniqueString: uniqueString })
+        console.log(user) //BUSCA AL USUARIO CORRESPONDIENTE AL LINK
+        if (user) {
+            user.emailVerificado = true //COLOCA EL CAMPO emailVerified en true
+            await user.save()
+            res.redirect("http://localhost:3000/") //REDIRECCIONA AL USUARIO A UNA RUTA DEFINIDA
+            //return  res.json({success:true, response:"Su email se ha verificado correctamente"})
+        }
+        else { res.json({ success: false, response: "Su email no se ha verificado" }) }
+    },
 
 
 }

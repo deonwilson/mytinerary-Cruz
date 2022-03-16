@@ -5,7 +5,7 @@ const itinerariosController =require('../controllers/itinerariosController')
 const usuariosController = require('../controllers/usuariosControllers')
 const {obtenerCiudades, cargarCiudad, eliminarCiudad, actualizarCiudad, obtenerCuidadID} = ciudadesController
 const {obtenerItinerarios, cargarItinerario, eliminarItinerario, actualizarItinerario, obtenerItinerarioID, obtenerItinerariosPorCiudad} = itinerariosController
-const {registrarse, iniciarSesion, cerrarSesion} = usuariosController
+const {registrarse, iniciarSesion, cerrarSesion, verificarEmail} = usuariosController
 /* , signInUser, signOutUser */
 //ciudades
 Router.route('/ciudades')
@@ -39,5 +39,7 @@ Router.route('/autorizacion/signIn')
 Router.route('/autorizacion/signOut')
 .post(cerrarSesion)
 
-
+//verificacion email
+Router.route('/verify/:uniqueString') //RECIBE EL LINK DE USUARIO
+.get(verificarEmail) //LLAMA A FUNCION DE VERIFICACIION
 module.exports = Router

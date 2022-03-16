@@ -7,6 +7,7 @@ const usuariosSchema = new mongoose.Schema({
     contrasenia:[{type:String, required:true}],
     foto:{type:String, required: true},
     pais:{type:String, required:true},
+    uniqueString:{type:String, required:true},
     emailVerificado:{type:Boolean, required:true}, 
     from:{type:Array}
     
