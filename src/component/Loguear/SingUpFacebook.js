@@ -1,28 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
 import {registrarUsuario} from '../../redux/usuarios/usuarios';
 import { useDispatch } from 'react-redux';
 /* import './styleSign.css' */
 
-function FacebookSignUp() {
+function FacebookSignUp(prop) {
   const dispatch = useDispatch()
-
+  const algunPais = prop.unPais
+  console.log(algunPais)
   const responseFacebook = async (res) => {
     
-
     const userData={
         nombre:res.name.split(" ")[0],
         apellido:res.name.split(" ").pop(),
         email:res.email,
         contrasenia:res.id,
         foto:res.picture.data.url,
-        pais:"argentina",
+        pais:algunPais,
         from:"facebook"
     }
     await dispatch(registrarUsuario(userData))
-
+    console.log(userData.pais)
   }
+  
 
   return (
     <FacebookLogin

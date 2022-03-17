@@ -73,3 +73,11 @@ form{
 .loginFacebook{
     margin-top: 50px!important;
 }
+
+.botonFacebook{
+    /* margin-top: 50px; */
+    margin: 50px 0px;
+    text-align: center;
+    width: 100%;
+    background-color: red;
+}

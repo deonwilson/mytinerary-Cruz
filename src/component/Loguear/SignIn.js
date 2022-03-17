@@ -10,7 +10,7 @@ const SignIn = () => {
 
     const handleSubmit = (event) => {
 		event.preventDefault()
-        
+        console.log(event.target[0].value)
 		const dataUsuario = {
 			email: event.target[0].value,
 			contrasenia: event.target[1].value,

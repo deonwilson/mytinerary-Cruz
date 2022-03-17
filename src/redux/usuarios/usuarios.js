@@ -34,14 +34,14 @@ export default function usuarioReducer(state=dataInicial, action){
 export const registrarUsuario = (dataUsuario) => async (dispatch, getState) =>{
 
         const respuesta = await axios.post('http://localhost:4000/api/autorizacion/signUp', { dataUsuario }) //datos para registrarse
-        /* console.log(respuesta.data.message) */
+        console.log(respuesta.data)
         dispatch({ type: MENSAJE, payload: respuesta.data.message })
 }
 
 export const iniciarSesion= (dataUsuario) => async (dispatch, getState) => {
         
         const usuario = await axios.post('http://localhost:4000/api/autorizacion/signIn', { dataUsuario }) //mandar contra y mail
-        
+        console.log(usuario.data.response)
         if(usuario.data.success){
             localStorage.setItem('token', usuario.data.response.token)
             dispatch({type: USUARIO, payload: usuario.data.response.usuarioData});

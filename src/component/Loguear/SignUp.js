@@ -1,5 +1,5 @@
 //importaciones externas
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 //importaciones internas (logica)
@@ -11,28 +11,45 @@ const paises=["Argentina", "Brasil", "Spain", "Germany", "Italy", "Japan", "japa
 
 const SignUp = () => {
     const dispatch = useDispatch()
-    const mensaje = useSelector(state => state.usuarioMain)
-    
-    console.log(mensaje)
-    
+    const [algunPais, setAlgunPais] = useState("")
+    /* const mensaje = useSelector(state => state.usuarioMain) */
     const handleSubmit = (event) => {
         event.preventDefault()
-       
         const userData={
             nombre:event.target[0].value,
             apellido:event.target[1].value,
             email:event.target[2].value,
             contrasenia:event.target[3].value,
             foto:event.target[4].value,
-            pais:event.target[5].value,
+            /* pais:event.target[5].value, */
+            pais:algunPais,
             from:"form-Signup"
         }
         dispatch(registrarUsuario(userData))
         
     }
-    
+    const capturarPais=(event) =>{
+        setAlgunPais(event.target.value)
+    }
     return (
-        <>  <div>.</div>   
+        <>  <div>.</div>
+            <div className='botonFacebook'>
+                <FacebookSignUp unPais={algunPais}/>
+                   
+                    
+                <p>🌎 Country</p>
+                <select className="form-select form-select-sm selectorPais" aria-label=".form-select-sm example" onChange={capturarPais}>
+                            <option >Select Country</option>
+                            {
+                            paises.map((unPais, index)=> <option value= {unPais} key={index}> 
+                                
+                                {unPais}
+                                </option> )
+                            }
+                </select>
+                
+            </div>
+            
             <form onSubmit={handleSubmit} className="flex">
                 <div className="factorComun mailMasNombre">
                     <div>
@@ -61,7 +78,7 @@ const SignUp = () => {
                         <label htmlFor="foto">Photo</label>
                         <input type="text" id="foto" name="foto"/>
                     </div>
-                    <div>
+                    {/* <div>
                         <label htmlFor="selectCountry">🌎 Country</label>
                         <select className="form-select form-select-sm selectorPais" aria-label=".form-select-sm example">
                             <option >Select Country</option>
@@ -70,7 +87,7 @@ const SignUp = () => {
                             }
                             
                         </select>
-                    </div>
+                    </div> */}
                     
                          
                 </div>
@@ -79,7 +96,7 @@ const SignUp = () => {
                 </div>
             </form>
             <div className="">Have an account? <Link to="/LogIn">SignIn</Link> </div>  
-            <FacebookSignUp /* pais={selectPaises}  *//>
+            
         </>
         
 

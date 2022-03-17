@@ -18,7 +18,7 @@ const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR
     })
 
     // EN ESTA SECCION LOS PARAMETROS DEL MAIL 
-    let sender = "chapi@gmail.com"  
+    let sender = "EmpresaChapi@gmail.com"  
     let mailOptions = { 
         from: sender,    //DE QUIEN
         to: email,       //A QUIEN
