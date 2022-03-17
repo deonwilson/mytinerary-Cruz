@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //importaciones internas
 import {iniciarSesion} from '../../redux/usuarios/usuarios'
+import FacebookSignIn from './FacebookSignIn'
+import './cssLoguear/form.css'
 const SignIn = () => {
     const dispatch = useDispatch()
     const usuario = useSelector(state=> state.usuarioMain.usuario)
@@ -12,7 +14,8 @@ const SignIn = () => {
 		const dataUsuario = {
 			email: event.target[0].value,
 			contrasenia: event.target[1].value,
-			from: "form-Signin"
+			/* from: "form-Signin" */
+			from: "form-Signup" 
 		}
 		dispatch(iniciarSesion(dataUsuario))
 	}
@@ -23,7 +26,11 @@ const SignIn = () => {
     
     return ( 
         <>
-        <div>.</div>   
+        <div>.</div>
+            <div className="loginFacebook">
+                <FacebookSignIn />
+            </div>
+             
             <form onSubmit={handleSubmit} className="flex">
                 <div className="factorComun mailMasNombre">
                     <div>

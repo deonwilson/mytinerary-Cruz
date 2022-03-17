@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {registrarUsuario} from '../../redux/usuarios/usuarios'
 //importaciones internas (foto, datos, hoja de estilos, etc)
 import './cssLoguear/form.css'
-
+import FacebookSignUp from './SingUpFacebook'
 const paises=["Argentina", "Brasil", "Spain", "Germany", "Italy", "Japan", "japan", "France"]
 
 const SignUp = () => {
@@ -78,8 +78,8 @@ const SignUp = () => {
                     <button type="submit" className="inputEnviar">Create new  account</button>
                 </div>
             </form>
-
             <div className="">Have an account? <Link to="/LogIn">SignIn</Link> </div>  
+            <FacebookSignUp /* pais={selectPaises}  *//>
         </>
         
 

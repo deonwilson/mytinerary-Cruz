@@ -2,7 +2,9 @@ const Usuarios = require('../models/usuarios')
 const bcryptjs = require('bcryptjs')
 const crypto = require('crypto')        
 const nodemailer = require('nodemailer') 
-//funciones auxiliares
+const jwt = require('jsonwebtoken')
+
+//funciones auxiliares 
 const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR EL EMAIL
 
     const transporter = nodemailer.createTransport({ //DEFINIMOS EL TRASPORTE UTILIZANDO NODEMAILER
@@ -133,23 +135,25 @@ const UsuariosController = {
                 res.json({ success: false, message: "Tu usuarios no a sido registrado realiza signIn" })
 
             } else {
-                if (from !== "form-Signin") { 
+                if (from !== "form-Signup") { 
                     
                     let contraseniaCompatible =  usuarioExiste.contrasenia.filter(pass =>bcryptjs.compareSync(contrasenia, pass))
                     
                     if (contraseniaCompatible.length >0) { //TERERO VERIFICA CONTRASEÑA
 
                         const usuarioData = {
+                            id:usuarioExiste._id,
                             nombre:usuarioExiste.nombre,
                             email: usuarioExiste.email,
                             from:usuarioExiste.from
 
                         }
                         await usuarioExiste.save()
+                        const token = jwt.sign({...usuarioData}, process.env.SECRET_KEY,{expiresIn:60*60*24})
 
                         res.json({ success: true, 
                                    from:from,
-                                   response: {usuarioData }, 
+                                   response: {token, usuarioData }, 
                                    message:"Bienvenido nuevamente "+usuarioData.nombre,
                                  })
 
@@ -169,9 +173,11 @@ const UsuariosController = {
                             from:usuarioExiste.from
                             }
                         
+                        const token = jwt.sign({...usuarioData}, process.env.SECRET_KEY,{expiresIn:60*60*24})
+
                         res.json({ success: true, 
                             from: from, 
-                            response: {usuarioData}, 
+                            response: {token, usuarioData}, 
                             message:"Bienvenido nuevamente "+usuarioData.nombre,
                           })
                         }else{
@@ -218,6 +224,18 @@ const UsuariosController = {
         }
         else { res.json({ success: false, response: "Su email no se ha verificado" }) }
     },
+
+    verificarToken:(req, res) => {
+        console.log(req.user)
+        if(!req.err){
+        res.json({success:true,
+                  response:{id:req.user.id, nombre:req.user.nombre, apellido:req.user.apellido, email:req.user.email, from:"token"},
+                  message:"Bienvenido nuevamente "+req.user.nombre}) 
+        }else{
+            res.json({success:false,
+            message:"Por favor realiza nuevamente signIn"}) 
+        }
+    }
 
 
 }
