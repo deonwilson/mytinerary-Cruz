@@ -89,33 +89,25 @@ const SignUp = () => {
                         <button type="submit" className="inputEnviar">Create new  account</button>
                         
                     </div>
+                    
                 </form>
                 
-                {mensaje[0] === "Ya has realizado tu SignUp de esta forma por favor realiza SignIn"
+                {mensaje[0] === "Ya has realizado tu SignUp de esta forma por favor realiza SignIn" 
+                || mensaje[0] === "has already been registered you SignUp, please start SignIn"
+                || mensaje.length === 0
                 ?
                 <div className='bienvenido'>
-                <p >{mensaje[0]}😎</p>
+                <p>{mensaje[0]}😎</p>
                 </div>
                 :
-                mensaje[0] === "has already been registered you SignUp, please start SignIn"           
-                ?
-                <div className='bienvenido'><p>{mensaje[0]} 😒</p></div>
-                :
-                <div className='errores'>
+                <>  
+                    <div className='errores'>
                     <h5>Please Correct Errors Before Submitting Form ❗❗😔</h5>
-                {mensaje.map((error, index) =>
-                    <p key={String(index)}>{error}</p>
-                )}
-                
-                </div>
-                
-                }
-                
+                        {mensaje.map((error, index) =>  <p key={String(index)}> {error} </p> )}
+                    </div>
                     
-                
-              
-                       
-
+                </>
+                }
             </>
             }
             <div className="iniciarSesion">Have an account? <Link to="/LogIn">SignIn</Link> </div> 
@@ -125,3 +117,4 @@ const SignUp = () => {
  
 export default SignUp;
 
+// <div className='bienvenido'><p>{mensaje[0]} 😒</p></div> 
