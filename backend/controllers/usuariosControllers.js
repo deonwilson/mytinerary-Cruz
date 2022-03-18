@@ -25,7 +25,7 @@ const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR
         subject: "Verificacion de email usuario ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
         html: `
         <div >
-        <h1 style="color:red">Presiona <a href=http://localhost:4000/api/verify/${uniqueString}>aqui</a> para confirma tu email. Gracias </h1>
+        <h1>Presiona <a href=http://localhost:4000/api/verify/${uniqueString}>aqui</a> para confirma tu email. Gracias </h1>
         </div>
         `
     
@@ -51,7 +51,7 @@ const UsuariosController = {
 
             if(usuarioExiste){
                 if (usuarioExiste.from.indexOf(from) !== -1) {
-                    res.json({ success: false, from:"signup", message: "Ya has realizado tu SignUp de esta forma por favor realiza SignIn" })
+                    res.json({ success: false, from:"signup", message: "has already been registered you SignUp, please start SignIn" })
                 }
                 else{
                     const encripatacionContrasenia = bcryptjs.hashSync(contrasenia, 15)
@@ -66,7 +66,7 @@ const UsuariosController = {
                     res.json({
                         success: true, 
                         from:"signup", //RESPONDE CON EL TOKEN Y EL NUEVO USUARIO
-                        message: "Te enviamos un email para validarlo, por favor verifica tu casilla para completar el signUp y agregarlo a tus metodos de SignIN "
+                        message: "If you have just paid for lessons, then we have sent you a verification email to confirm your email address.  "
                     }) 
                     
                     }else{

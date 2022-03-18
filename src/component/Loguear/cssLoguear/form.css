@@ -5,8 +5,16 @@ form{
     align-items: center;
     margin-top: 100px;
     margin-bottom: 20px;
-    /* background-color: red; */
+    background-color: rgba(41, 38, 38, 0.836);
+    padding: 20px;
+    display: flex;
     width: 90%;
+    border-radius: 20px;
+    color:#fff;
+}
+form:hover{
+    background-color: rgba(20, 181, 187, 0.836)!important;
+    color:#000 !important;
 }
 .factorComun{
     width:90%;
@@ -65,9 +73,19 @@ form{
     background-color: rgba(27, 2, 26, 0.89);
 }
 .selectorPais{
-   /*  background-color: red; */
+    margin-top: 100px!important;
+    background-color: rgba(41, 38, 38, 0.836)!important;
+    width: 200px!important;
     height: 100%;
     font-size: 20px;
+    margin:auto;
+    color:#fff;
+    
+
+}
+.selectorPais:hover{
+    background-color: rgba(20, 181, 187, 0.836)!important;
+    color:#000 !important;
 }
 
 .loginFacebook{
@@ -79,5 +97,77 @@ form{
     margin: 50px 0px;
     text-align: center;
     width: 100%;
+    /* background-color: red; */
+}
+
+.my-facebook-button-class{
+    background-color: rgba(41, 38, 38, 0.836)!important;
+    color:#ffff !important;
+    padding: 10px 20px!important;
+    border-radius: 20px!important;
+}
+.my-facebook-button-class:hover{
+    background-color: rgba(20, 181, 187, 0.836)!important;
+    color:#000 !important;
+}
+.elegirPais{
+    margin-top:4%;
+    margin-bottom:0.5%;
+    height: 58vh;
+    background-color: rgba(0, 218, 218, 0.151);
+    border-radius: 10px;
+    border : solid rgba(11, 68, 78, 0.26) 3px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iniciarSesion{
+    /* background-color: red; */
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+.iniciarSesion a{
+    text-decoration: none;
+    padding:5px 10px;
+    border-radius: 5px 10px;
+    background-color: rgba(41, 38, 38, 0.836)!important;
+    color:#ffff !important;
+}
+.iniciarSesion a:hover{
+    background-color: rgba(20, 181, 187, 0.836)!important;
+    color:#000 !important;
+}
+.errores{
     background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px!important;
+}
+.bienvenido{
+    /* background-color: red; */
+    text-align: center;
+}
+
+.my-facebook-button-class{
+    /* background-color: red!important; */
+    text-align: center;
+}
+.bienvenido{
+    margin: 4% 0px;
+}
+@media (min-width: 700px) {
+    form{
+        width: 700px;
+        
+    }
+    .errores{
+        width: 700px;
+        margin: auto;
+    }
 }

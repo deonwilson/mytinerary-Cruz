@@ -25,17 +25,21 @@ function FacebookSignUp() {
   }
   
 
-  return (
-    <FacebookLogin
-    cssClass="buttonsocial my-facebook-button-class"
-    icon="fa-facebook"
-    textButton=" SignUp with Facebook"
-      appId="509763010866283"
-      autoLoad={false}
-      fields="name,email,picture"
-      callback={responseFacebook}
+  return (<>
+        <p>Sign Up For Facebook</p>
+        <FacebookLogin 
+            cssClass="buttonsocial my-facebook-button-class"
+            icon="fa-facebook"
+            textButton=" SignUp with Facebook"
+              appId="509763010866283"
+              autoLoad={false}
+              fields="name,email,picture"
+              callback={responseFacebook}
 
-    />
+            />
+    
+        </>
+    
   );
 }
 

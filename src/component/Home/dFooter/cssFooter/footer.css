@@ -8,7 +8,19 @@ footer{
     border-top-right-radius: 40px; */
     
 }
-
+footer nav {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    width: 250px!important;
+    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
+}
 footer nav a{
     color: #000 !important;
+    /* background-color: antiquewhite; */
+    width: 100px;
 }
+
+

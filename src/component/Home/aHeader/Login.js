@@ -17,11 +17,11 @@ const Login = () => {
                     {
                     usuario 
                     ? 
-                    <li><Link to='/LogIn' onClick={()=>dispatch(cerrarSesion(usuario.email))}>Sign Out</Link></li>
+                    <li className='padreAncorLogin'><Link to='/LogIn' onClick={()=>dispatch(cerrarSesion(usuario.email))} className='ancorLogin'>Sign Out</Link></li>
                     :
                     <>
-                        <li><Link to='/LogIn'>Log In</Link></li>
-                        <li><Link to='/SignUp'>Sign Up</Link></li>
+                        <li className='padreAncorLogin'><Link to='/LogIn' className='ancorLogin'>Log In</Link></li>
+                        <li className='padreAncorLogin'><Link to='/SignUp' className='ancorLogin' >Sign Up</Link></li>
                     </>
                     }
                 </ul>    

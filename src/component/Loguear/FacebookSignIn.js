@@ -17,17 +17,20 @@ function FacebookSignIn() {
     await dispatch(iniciarSesion(logedUser))
   }
 
-  return (
-    <FacebookLogin
-    cssClass="buttonsocial my-facebook-button-class"
-    icon="fa-facebook"
-    textButton=" with Facebook"
-      appId="880106799435159"
-      autoLoad={false}
-      fields="name,email,picture"
-      callback={responseFacebook}
+  return (<div>
+            <FacebookLogin
+                cssClass="buttonsocial my-facebook-button-class"
+                icon="fa-facebook"
+                textButton=" with Facebook"
+                  appId="880106799435159"
+                  autoLoad={false}
+                  fields="name,email,picture"
+                  callback={responseFacebook}
 
-    />
+                />
+
+        </div>
+    
   );
 }
 export default FacebookSignIn

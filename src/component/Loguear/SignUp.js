@@ -35,10 +35,9 @@ const SignUp = () => {
     }
     return (
         <>  <div>.</div>
-            <p>hola para crearte un usaurio seleciona un pais para poder poder iniciar sesion</p>
-            <p>🌎 Country</p>
+                
                 <select className="form-select form-select-sm selectorPais" aria-label=".form-select-sm example" onChange={(event)=>dispatch(seleccionarUnPais(event.target.value))}>
-                           
+                      
                             {
                             paises.map((unPais, index)=> <option value= {unPais} key={index} > 
                                 
@@ -46,16 +45,18 @@ const SignUp = () => {
                                 </option> )
                             }
             </select>
-            {!estadoPais || estadoPais === "Select Country"? <p>porfavor elige un pais para poder continuar</p>
+            
+            {!estadoPais || estadoPais === "Select Country"? <div className='elegirPais'><p>Please choose your country of residence below</p></div>
             :
             <>
-                <p>con que metodo desas crearte una cuenta</p>
+                
                 <div className='botonFacebook'>
                 <FacebookSignUp />
                 </div>
                 
-               
+                
                 <form onSubmit={handleSubmit} className="flex">
+                <p>Sign Up for Mytinerary</p>
                     <div className="factorComun mailMasNombre">
                         <div>
                             <label htmlFor="nombre">name</label>
@@ -90,19 +91,24 @@ const SignUp = () => {
                     </div>
                 </form>
                 
-                {mensaje.length === 1
+                {mensaje[0] === "Ya has realizado tu SignUp de esta forma por favor realiza SignIn"
                 ?
-                <>  
-                <p>{mensaje[0]}</p>
-                <div className="as">Have an account? <Link to="/LogIn">SignIn</Link> </div> 
-                </>
+                <div className='bienvenido'>
+                <p >{mensaje[0]}😎</p>
+                </div>
                 :
-                <>
+                mensaje[0] === "has already been registered you SignUp, please start SignIn"           
+                ?
+                <div className='bienvenido'><p>{mensaje[0]} 😒</p></div>
+                :
+                <div className='errores'>
+                    <h5>Please Correct Errors Before Submitting Form ❗❗😔</h5>
                 {mensaje.map((error, index) =>
                     <p key={String(index)}>{error}</p>
                 )}
-                <div className="as">Have an account? <Link to="/LogIn">SignIn</Link> </div> 
-                </>
+                
+                </div>
+                
                 }
                 
                     
@@ -111,7 +117,8 @@ const SignUp = () => {
                        
 
             </>
-            } 
+            }
+            <div className="iniciarSesion">Have an account? <Link to="/LogIn">SignIn</Link> </div> 
         </>
     );
 }

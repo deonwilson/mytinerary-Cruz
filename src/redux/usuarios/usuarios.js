@@ -6,8 +6,8 @@ const dataInicial = {
     mensaje:[],
     unPais: null,
     paisesDisponibles: 
-    ["Select Country","Argentina", "Brasil", "Spain", "Germany", "Italy", "Japan", "England", "France"]
-    //mensajeLogIn: ""
+    ["Select Country","Argentina", "Brasil", "Spain", "Germany", "Italy", "Japan", "England", "France"],
+    mensajeLogIn: ""
     
 }
 //types
@@ -43,6 +43,11 @@ export default function usuarioReducer(state=dataInicial, action){
             return{
                 ...state,
                 unPais:action.payload
+            }
+        case MENSAJE_LOGIN:
+            return {
+                ...state,
+                mensajeLogIn:action.payload
             }
         default:
             return state

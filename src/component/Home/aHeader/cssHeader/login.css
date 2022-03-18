@@ -34,3 +34,21 @@
     text-align: center;
 
 }
+.padreAncorLogin{
+    /* background-color: red!important; */
+    display: flex;
+}
+.padreAncorLogin:hover{
+    background-color: rgba(0, 0, 0, 0.856);
+}
+.ancorLogin{
+    text-decoration: none;
+    color:#fff;
+    flex-grow: 1;
+    /* background-color: red; */
+   
+}
+.ancorLogin:hover{
+    text-decoration: none;
+    color:#fff;
+}

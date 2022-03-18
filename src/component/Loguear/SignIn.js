@@ -29,7 +29,8 @@ const SignIn = () => {
     return ( 
         <>
         <div>.</div>
-            <div className="loginFacebook">
+            <div className="botonFacebook">
+                <h1 className="bienvenido">Welcome!</h1>
                 <FacebookSignIn />
             </div>
              
