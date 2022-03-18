@@ -145,7 +145,7 @@ const UsuariosController = {
                             id:usuarioExiste._id,
                             nombre:usuarioExiste.nombre,
                             email: usuarioExiste.email,
-                            from:usuarioExiste.from
+                            from:from
 
                         }
                         await usuarioExiste.save()
@@ -168,6 +168,7 @@ const UsuariosController = {
                         let contraseniaCompatible =  usuarioExiste.contrasenia.filter(pass =>bcryptjs.compareSync(contrasenia, pass))
                         if(contraseniaCompatible.length >0){
                         const usuarioData = {
+                            id:usuarioExiste._id,
                             nombre: usuarioExiste.nombre, 
                             email: usuarioExiste.email,
                             from:usuarioExiste.from
