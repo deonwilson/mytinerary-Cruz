@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 
 import {registrarUsuario} from '../../redux/usuarios/usuarios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 /* import './styleSign.css' */
 
-function FacebookSignUp(prop) {
+function FacebookSignUp() {
   const dispatch = useDispatch()
-  const algunPais = prop.unPais
-  console.log(algunPais)
+  const estadoPais = useSelector(state => state.usuarioMain.unPais)
+  console.log(estadoPais)
   const responseFacebook = async (res) => {
     
     const userData={
@@ -17,7 +17,7 @@ function FacebookSignUp(prop) {
         email:res.email,
         contrasenia:res.id,
         foto:res.picture.data.url,
-        pais:algunPais,
+        pais:estadoPais,
         from:"facebook"
     }
     await dispatch(registrarUsuario(userData))

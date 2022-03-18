@@ -6,8 +6,10 @@ import FacebookSignIn from './FacebookSignIn'
 import './cssLoguear/form.css'
 const SignIn = () => {
     const dispatch = useDispatch()
-    const usuario = useSelector(state=> state.usuarioMain.usuario)
-
+    const usuario = useSelector(state=> state.usuarioMain)
+    const mensajeSignIn = useSelector(state=> state.usuarioMain.mensajeLogIn)
+    console.log(mensajeSignIn)
+    console.log(usuario)
     const handleSubmit = (event) => {
 		event.preventDefault()
         console.log(event.target[0].value)
@@ -19,7 +21,7 @@ const SignIn = () => {
 		}
 		dispatch(iniciarSesion(dataUsuario))
 	}
-    console.log(usuario)
+    
     /* useEffect(()=>{
        dispatch(iniciarSesion(dataUsuario))
     },[]) */
