@@ -7,14 +7,14 @@ const dataInicial = {
     unPais: null,
     paisesDisponibles: 
     ["Select Country","Argentina", "Brasil", "Spain", "Germany", "Italy", "Japan", "England", "France"],
-    mensajeLogIn: ""
+    /* mensajeLogIn: "" */
     
 }
 //types
 const USUARIO = 'USUARIO' 
 const MENSAJE = "MENSAJE"
 const SELECCIONAR_PAIS = "SELECCIONAR_PAIS"
-const MENSAJE_LOGIN = "MENSAJE_LOGIN"
+/* const MENSAJE_LOGIN = "MENSAJE_LOGIN" */
 //reducer
 export default function usuarioReducer(state=dataInicial, action){
     
@@ -44,11 +44,11 @@ export default function usuarioReducer(state=dataInicial, action){
                 ...state,
                 unPais:action.payload
             }
-        case MENSAJE_LOGIN:
+        /* case MENSAJE_LOGIN:
             return {
                 ...state,
                 mensajeLogIn:action.payload
-            }
+            } */
         default:
             return state
     }
@@ -100,12 +100,7 @@ export const verificarToken = (token) =>  async (dispatch, getState) => {
             dispatch({ type: USUARIO, payload: user.data.response });
             dispatch({
                 type: MENSAJE,
-                payload: {
-                    /* view: true, */
-                    message: user.data.message,
-                   /*  success: user.data.success */
-                }
-            });
+                payload: user.data.message});
         } else {
             localStorage.removeItem('token')
         }

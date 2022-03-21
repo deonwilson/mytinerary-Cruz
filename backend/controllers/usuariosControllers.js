@@ -135,7 +135,7 @@ const UsuariosController = {
                 res.json({ success: false, message: "Tu usuarios no a sido registrado realiza signIn" })
 
             } else {
-                if (from !== "form-Signup") { 
+                if (from !== "form-Signin") { //form-Signin
                     
                     let contraseniaCompatible =  usuarioExiste.contrasenia.filter(pass =>bcryptjs.compareSync(contrasenia, pass))
                     
@@ -149,6 +149,7 @@ const UsuariosController = {
 
                         }
                         await usuarioExiste.save()
+                        
                         const token = jwt.sign({...usuarioData}, process.env.SECRET_KEY,{expiresIn:60*60*24})
 
                         res.json({ success: true, 
@@ -171,7 +172,7 @@ const UsuariosController = {
                             id:usuarioExiste._id,
                             nombre: usuarioExiste.nombre, 
                             email: usuarioExiste.email,
-                            from:usuarioExiste.from
+                            from:from
                             }
                         
                         const token = jwt.sign({...usuarioData}, process.env.SECRET_KEY,{expiresIn:60*60*24})
@@ -230,7 +231,7 @@ const UsuariosController = {
         console.log(req.user)
         if(!req.err){
         res.json({success:true,
-                  response:{id:req.user.id, nombre:req.user.nombre, apellido:req.user.apellido, email:req.user.email, from:"token"},
+                  response:{id:req.user.id, nombre:req.user.nombre, email:req.user.email, from:"token"},
                   message:"Bienvenido nuevamente "+req.user.nombre}) 
         }else{
             res.json({success:false,

@@ -7,7 +7,7 @@ const Usuarios = require('../models/usuarios')
 
 module.exports = passport.use(new jwtStrategy({
     jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: "asdASD"
+    secretOrKey: "queOndaRey"
 },(jwt_payload,done)=>{
     console.log(jwt_payload)
     Usuarios.findOne({_id:jwt_payload.id})

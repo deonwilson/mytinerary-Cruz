@@ -6,25 +6,17 @@ import FacebookSignIn from './FacebookSignIn'
 import './cssLoguear/form.css'
 const SignIn = () => {
     const dispatch = useDispatch()
-    const usuario = useSelector(state=> state.usuarioMain)
-    const mensajeSignIn = useSelector(state=> state.usuarioMain.mensajeLogIn)
-    console.log(mensajeSignIn)
-    console.log(usuario)
+    
     const handleSubmit = (event) => {
 		event.preventDefault()
-        console.log(event.target[0].value)
+        console.log(event.target[1].value)
 		const dataUsuario = {
 			email: event.target[0].value,
 			contrasenia: event.target[1].value,
-			/* from: "form-Signin" */
-			from: "form-Signup" 
+			from: "form-Signin" 
 		}
 		dispatch(iniciarSesion(dataUsuario))
 	}
-    
-    /* useEffect(()=>{
-       dispatch(iniciarSesion(dataUsuario))
-    },[]) */
     
     return ( 
         <>

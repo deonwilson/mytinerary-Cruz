@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch()
   useEffect(() => {
  
-    if(localStorage.getItem('token')!== null){
+    if(localStorage.getItem('token') !== null){
       const token = localStorage.getItem("token")
       dispatch(verificarToken(token))
     }
