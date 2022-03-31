@@ -8,7 +8,7 @@ const Comentarios = (props) => {
     const cambio = useSelector(state => state.comentarioMain.cambio)
     //console.log(typeof props.comentariosTotales)
     const [inputText, setInputText] = useState()
-
+    const [comentarios, setComentarios] = useState()
   
     async function cargarUnComentario(event) {
       
@@ -19,19 +19,38 @@ const Comentarios = (props) => {
       
       //quiero el conjuntod de comentarios dependiendo de un id
       await dispatch(cargarComentario(comentarioUsuario, cambio))
-      .then(res => console.log(res.data.response.nuevoComentario.comentarios), setInputText(""))
+      .then(res => setComentarios(res.data.response.nuevoComentario.comentarios), setInputText(""))
       
     }
+    //console.log(comentarios)
     return ( 
             <div className='comentarios'>
                 
                 {  typeof props.comentariosTotales !== "undefined" ?
                 
-                props.comentariosTotales.map((coment,index) => {
-                    console.log(coment)
-                        return(
-                            <p key={index}>{coment.comentario}</p>
+                props.comentariosTotales?.map((coment, index) => {
+                    if(coment.usuarioId?._id !== usuario?.id ){
+                    
+                        return(<div key={index}>
+                            <h5>{coment.usuarioId.nombre}</h5>
+                            <p>{coment.comentario}</p>
+                            </div>
                         )
+                    }else{
+                      return(
+                        <div className="card cardComments" key={index}>
+                          <h5 className="card-header">
+                            {coment.usuarioId.nombre}
+                          </h5>
+                          <div className="card-body ">
+                            <textarea type="text" className="card-text textComments" /* onChange={(event) => setModifi(event.target.value)} */ defaultValue={coment.comentario} />
+                            <button id={coment.usuarioId._id} /* onClick={modificarComentario} */ >Modificar</button>
+                            <button id={coment.usuarioId._id} /* onClick={eliminarComentario} */ >Eliminar</button>
+                          </div>
+                        </div>
+                      )
+                    }
+                    
                     })
                   :
                   

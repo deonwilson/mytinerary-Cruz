@@ -7,7 +7,7 @@ const itinerariosSchema = new  mongoose.Schema({
     autor:{type: mongoose.Types.ObjectId, ref: 'usuarios'},
     comentarios:[{
         comentario: {type: String},
-        usurioId:{type:mongoose.Types.ObjectId, ref:"usuarios"}
+        usuarioId:{type:mongoose.Types.ObjectId, ref:"usuarios"}
     }]
     
     

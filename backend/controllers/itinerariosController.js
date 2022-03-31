@@ -74,12 +74,14 @@ const itinerariosController = {
     },
 
     obtenerItinerariosPorCiudad: async (req, res) =>{
+        //const place = await Places.findOne({_id:id}).populate("autor", {fullName:1}).populate("comments.userID",{fullName:1})
+        //res.json({ success: false, response:{place} })
         let ciudadId = req.params.idCiudad
         let itinerarios 
         let error = null
         
-        try{
-            itinerarios = await Itinerarios.find({ciudad:ciudadId}).limit(2)
+        try{//agregue solamente esto en la linea 84 populate("autor", {fullName:1}).populate("comments.userID",{fullName:1})
+            itinerarios = await Itinerarios.find({ciudad:ciudadId}).populate("autor", {nombre:1}).populate("comentarios.usuarioId",{nombre:1})
             
         }catch(err){
             error = err
