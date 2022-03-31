@@ -1,20 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom'
 import './cssAnyCities/itinerario.css'
 import {desplegarItinerario} from '../../redux/itinerario/itinerarioReducer'
 import ComentActividadPar from './ComentActivi'
 import ComentActividadInpar from './ComentActividadInpar'
+import LikeDisLike from './LikeDislike'
 const Itinerario = () => {
     const {id} = useParams()
+    /* const [reactivo, setReactivo] =useState(true) */
+    const cambio = useSelector(state => state.comentarioMain.cambio)
     const dispatch = useDispatch()
+    
     const itinerariosActuales = useSelector(state => state.itinerarioMain.itinerario)
-    /* console.log(itinerariosActuales.length) */
-
+    //console.log(itinerariosActuales)
+    //console.log(itinerariosActuales)
     useEffect(()=>{
         dispatch(desplegarItinerario(id))
+        //console.log("automatico")
     },[])
-    /* console.log(itinerariosActuales) */
+    //console.log(cambio)
+    useEffect(()=>{
+        dispatch(desplegarItinerario(id))
+        //console.log("anteUncambio cambie")
+    },[cambio])
     
     
     return ( 
@@ -32,7 +41,7 @@ const Itinerario = () => {
                 </div> 
 
                 <div className='detalle'>
-                    <p className='detalleUno'>{unItinerario.itinerario.nombre}</p>
+                    <p className='detalleUno' >{unItinerario.itinerario.nombre}</p>
                     <div className='detalleDos'> 
                         <p>price: 
                         { imprimirBilletes(unItinerario.itinerario.price).map((e, indexx)=><span key={indexx}>💵</span>)}                             
@@ -41,19 +50,25 @@ const Itinerario = () => {
                     </div>
                     <div className='detalleTres'>
                         {unItinerario.itinerario.hashtags.map((unHashtags,indexxx)=><p className="unHashtags"key={indexxx}>{unHashtags}</p> )}
-                        <p className='meGusta'>{unItinerario.itinerario.likes}👍</p>
+                        
+                        <LikeDisLike like={unItinerario.likes} id={unItinerario._id} posicion={index} />
+                        
                     </div>
                 </div>
             </div>
+           
             {
                 [1].map(eleme=>{
+                    //console.log(unItinerario._id)
                     if(index+2%2===0){
+                        
                         return(
-                            <ComentActividadPar key={index}/>
+                            <ComentActividadPar key={index} itinerarioId= {unItinerario._id} comentariosTotales ={unItinerario.comentarios}/>
                         )
                     }else{
+                        
                        return(
-                        <ComentActividadInpar key={index}/>
+                        <ComentActividadInpar key={index} itinerarioId= {unItinerario._id} comentariosTotales ={unItinerario.comentarios}/>
                        )
                     }
                 } )

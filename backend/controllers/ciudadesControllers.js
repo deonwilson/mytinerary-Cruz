@@ -41,7 +41,7 @@ const ciudadesController = {
     actualizarCiudad: async(req, res)=>{
         const id = req.params.id
         const ciudad = req.body.dataInput
-        console.log(req.body.dataInput)
+        
         let ciudadActualizado = await Ciudades.findOneAndReplace({_id:id}, ciudad)
         .then((respuesta)=> res.json({respuesta}))
 

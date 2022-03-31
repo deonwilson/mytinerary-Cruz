@@ -1,7 +1,7 @@
 //importaciones externa
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
 import {useParams, Link} from 'react-router-dom'
-import axios from 'axios'
+
 //importaciones interna
 import Itinerarios from './itinerarios'
 import {desplegarCiudadRItinerario} from '../../redux/itinerario/itinerarioReducer'

@@ -4,9 +4,12 @@ const passport = require('../config/passport')
 
 const ciudadesController = require('../controllers/ciudadesControllers')
 const itinerariosController =require('../controllers/itinerariosController')
+const comentarioControllers = require('../controllers/comentariosControllers')
 const usuariosController = require('../controllers/usuariosControllers')
+const { Route } = require('react-router-dom')
 const {obtenerCiudades, cargarCiudad, eliminarCiudad, actualizarCiudad, obtenerCuidadID} = ciudadesController
-const {obtenerItinerarios, cargarItinerario, eliminarItinerario, actualizarItinerario, obtenerItinerarioID, obtenerItinerariosPorCiudad} = itinerariosController
+const {obtenerItinerarios, cargarItinerario, eliminarItinerario, actualizarItinerario, obtenerItinerarioID, obtenerItinerariosPorCiudad, meGustaNoMegusta} = itinerariosController
+const {cargarComentario} =comentarioControllers
 const {registrarse, iniciarSesion, cerrarSesion, verificarEmail, verificarToken} = usuariosController
 /* , signInUser, signOutUser */
 //ciudades
@@ -31,6 +34,10 @@ Router.route('/itinerarios/:id')
 Router.route('/itinerarios/ciudad/:idCiudad')
 .get(obtenerItinerariosPorCiudad)
 
+//---------------------------------------------------------------------------> comentarios de itinerarios
+Router.route('/itinerarios/comentarios')
+.post(passport.authenticate('jwt',{ session:false }), cargarComentario)
+
 //Usuarios
 Router.route('/autorizacion/signUp')
 .post(validator, registrarse)
@@ -47,6 +54,10 @@ Router.route('/verify/:uniqueString') //RECIBE EL LINK DE USUARIO
 
 Router.route('/autorizacion/signInToken')
 .get(passport.authenticate('jwt',{ session:false }), verificarToken)
+
+//me gusta, no me gusta
+Router.route("/likeDislike/:id")
+.put(passport.authenticate('jwt',{ session:false }), meGustaNoMegusta)
 
 
 module.exports = Router

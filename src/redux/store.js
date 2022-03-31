@@ -6,12 +6,13 @@ import thunk from 'redux-thunk'
 import ciudadReducer from './ciudades/ciudades'
 import itinerarioReducer from './itinerario/itinerarioReducer'
 import usuarioReducer from './usuarios/usuarios'
+import comentarioReducer from './comentario/comentario'
 
 const rootReducer = combineReducers({
     ciudades: ciudadReducer,
     itinerarioMain: itinerarioReducer,
-    usuarioMain:usuarioReducer
-    
+    usuarioMain:usuarioReducer,
+    comentarioMain: comentarioReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

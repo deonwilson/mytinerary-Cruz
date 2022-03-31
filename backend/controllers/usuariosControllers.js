@@ -45,7 +45,7 @@ const UsuariosController = {
 
     registrarse: async(req, res)=>{ // req.body.dataUsuario
         const {nombre, apellido, email, contrasenia, foto, pais, from} = req.body.dataUsuario
-        /* console.log(req.body) */
+        
         try{
             const usuarioExiste = await Usuarios.findOne({email})
 
@@ -127,7 +127,7 @@ const UsuariosController = {
     iniciarSesion: async (req, res) => { //req.body.dataUsuario
 
         const { email, contrasenia,  from } = req.body.dataUsuario
-        console.log(req.body.dataUsuario)
+        
         try {
             const usuarioExiste = await Usuarios.findOne({ email })
 
@@ -205,7 +205,7 @@ const UsuariosController = {
     },
     
     cerrarSesion: async (req, res) => { // req.body.sesionCerrada 
-       console.log(req.body)
+       
         const email = req.body.sesionCerrada
         const user = await Usuarios.findOne({ email })
         await user.save()
@@ -217,7 +217,7 @@ const UsuariosController = {
         const { uniqueString } = req.params; //EXTRAE EL EL STRING UNICO DEL LINK
 
         const user = await Usuarios.findOne({ uniqueString: uniqueString })
-        console.log(user) //BUSCA AL USUARIO CORRESPONDIENTE AL LINK
+        //console.log(user) //BUSCA AL USUARIO CORRESPONDIENTE AL LINK
         if (user) {
             user.emailVerificado = true //COLOCA EL CAMPO emailVerified en true
             await user.save()
@@ -228,7 +228,7 @@ const UsuariosController = {
     },
 
     verificarToken:(req, res) => {
-        console.log(req.user)
+        //console.log(req.user)
         if(!req.err){
         res.json({success:true,
                   response:{id:req.user.id, nombre:req.user.nombre, email:req.user.email, from:"token"},

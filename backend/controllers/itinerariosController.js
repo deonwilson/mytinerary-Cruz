@@ -1,3 +1,4 @@
+const { response } = require("express")
 const Itinerarios = require("../models/itinerarios")
 
 const itinerariosController = {
@@ -90,7 +91,40 @@ const itinerariosController = {
             error : error
         })
         
-    }
+    },
+    
+    meGustaNoMegusta: async (req, res) => { 
+        
+         const id = req.params.id
+         const usuario = req.user.id
+         let itinerario
+         try{
+            itinerario = await Itinerarios.findOne({_id:id})
+            
+            if(itinerario.likes.includes(usuario)){
+                Itinerarios.findOneAndUpdate({ _id:id }, {$pull:{likes:usuario}}, {new:true})
+                .then(response => res.json({
+                success: true,
+                response: response.likes  
+                
+                }))
+                .catch(error => console.log(error))
+            }else{
+                Itinerarios.findOneAndUpdate({ _id:id }, {$push:{likes:usuario}}, {new:true})
+                
+                .then(response => res.json({
+                success: true,
+                response: response.likes    
+                }))
+                .catch(error => console.log(error))
+            }
+            
+        }catch(err){
+            error = err
+            res.json({success: false, response: error})
+        }
+         
+     }
 }
 
 module.exports = itinerariosController

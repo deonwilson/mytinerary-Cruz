@@ -10,6 +10,7 @@ const dataInicial = {
     /* mensajeLogIn: "" */
     
 }
+
 //types
 const USUARIO = 'USUARIO' 
 const MENSAJE = "MENSAJE"
@@ -29,11 +30,10 @@ export default function usuarioReducer(state=dataInicial, action){
             /* console.log(typeof action.payload.message == 'string') */
             return {
                 ...state,
-                
                 mensaje:
                 typeof action.payload.message !== 'string'
                 ? 
-                action.payload.message.map(mensaje => mensaje.message)
+                action.payload.message?.map(mensaje => mensaje.message)
                 :
                 [action.payload.message],
 

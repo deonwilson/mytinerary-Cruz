@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const Router = require('./routes/routes')
@@ -8,7 +9,7 @@ const app = express()
 
 
 
-require('dotenv').config()
+
 require('./config/database')
 
 

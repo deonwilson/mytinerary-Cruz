@@ -6,7 +6,6 @@ import FacebookSignIn from './FacebookSignIn'
 import './cssLoguear/form.css'
 const SignIn = () => {
     const dispatch = useDispatch()
-    
     const handleSubmit = (event) => {
 		event.preventDefault()
         console.log(event.target[1].value)
