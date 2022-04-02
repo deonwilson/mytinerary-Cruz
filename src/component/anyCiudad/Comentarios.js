@@ -1,35 +1,54 @@
-import React,{ useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {cargarComentario} from '../../redux/comentario/comentario'
+import {cargarComentario, actualizarComentario, eliminarComentario} from '../../redux/comentario/comentario'
 import './cssAnyCities/comentarios.css'
 const Comentarios = (props) => {
     const dispatch = useDispatch()
     const usuario = useSelector(state => state.usuarioMain.usuario)
     const cambio = useSelector(state => state.comentarioMain.cambio)
-    //console.log(typeof props.comentariosTotales)
     const [inputText, setInputText] = useState()
-    const [comentarios, setComentarios] = useState()
-  
+    const [modificar, setModificar] = useState()
+    console.log("primero")
+ 
     async function cargarUnComentario(event) {
       
       const comentarioUsuario = {
         itinerarioId: props.itinerarioId,
-        comentario: inputText,
+        comentario: inputText
       }
-      
       //quiero el conjuntod de comentarios dependiendo de un id
       await dispatch(cargarComentario(comentarioUsuario, cambio))
-      .then(res => setComentarios(res.data.response.nuevoComentario.comentarios), setInputText(""))
-      
+      .then(res => (res.data.response.nuevoComentario.comentarios), setInputText(""))
+    
     }
+
+    async function modificarComentario(event) {
+      const comentarioUsuario = {
+        comentarioId: event.target.id,
+        comentario: modificar
+      }
+      //console.log(comentarioUsuario)
+      await dispatch(actualizarComentario(comentarioUsuario, cambio))
+      .then(res=>console.log(res))
+  
+    }
+    
+    async function matarComentario(event) {
+      console.log(event.target.id)
+      dispatch(eliminarComentario(event.target.id, cambio))
+      .then(res=>(res))
+  
+    }
+    
     //console.log(comentarios)
     return ( 
             <div className='comentarios'>
                 
-                {  typeof props.comentariosTotales !== "undefined" ?
+                {  typeof props?.comentariosTotales !== "undefined" ?
                 
-                props.comentariosTotales?.map((coment, index) => {
-                    if(coment.usuarioId?._id !== usuario?.id ){
+                props?.comentariosTotales?.map((coment, index) => {
+                  
+                    if(coment?.usuarioId?._id !== usuario?.id ){
                     
                         return(<div key={index}>
                             <h5>{coment.usuarioId.nombre}</h5>
@@ -37,15 +56,16 @@ const Comentarios = (props) => {
                             </div>
                         )
                     }else{
+                     
                       return(
                         <div className="card cardComments" key={index}>
                           <h5 className="card-header">
-                            {coment.usuarioId.nombre}
+                            {coment?.usuarioId?.nombre}
                           </h5>
                           <div className="card-body ">
-                            <textarea type="text" className="card-text textComments" /* onChange={(event) => setModifi(event.target.value)} */ defaultValue={coment.comentario} />
-                            <button id={coment.usuarioId._id} /* onClick={modificarComentario} */ >Modificar</button>
-                            <button id={coment.usuarioId._id} /* onClick={eliminarComentario} */ >Eliminar</button>
+                            <textarea type="text" className="card-text textComments" onChange={(event) => setModificar(event.target.value)} value={coment.comentario} />
+                            <button id={coment._id} onClick={modificarComentario} >Modificar</button>
+                            <button id={coment._id} onClick={matarComentario} >Eliminar</button>
                           </div>
                         </div>
                       )

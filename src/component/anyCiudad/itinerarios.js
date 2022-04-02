@@ -11,9 +11,9 @@ const Itinerario = () => {
     /* const [reactivo, setReactivo] =useState(true) */
     const cambio = useSelector(state => state.comentarioMain.cambio)
     const dispatch = useDispatch()
-    
+    //console.log("Cambie a " + cambio)
     const itinerariosActuales = useSelector(state => state.itinerarioMain.itinerario)
-    //console.log(itinerariosActuales)
+    console.log(itinerariosActuales)
     //console.log(itinerariosActuales)
     useEffect(()=>{
         dispatch(desplegarItinerario(id))
@@ -22,7 +22,7 @@ const Itinerario = () => {
     //console.log(cambio)
     useEffect(()=>{
         dispatch(desplegarItinerario(id))
-        //console.log("anteUncambio cambie")
+        
     },[cambio])
     
     
@@ -30,7 +30,7 @@ const Itinerario = () => {
 
         <>
         {   itinerariosActuales.length ===0 ? <div className='noItinerarios'><h4>Itineraries not found for this city. Be the first one!</h4></div>:
-            itinerariosActuales.map((unItinerario, index) => 
+            itinerariosActuales?.map((unItinerario, index) => 
         <section className='sectionItinerario' key={String(index)}>
             {/* <h3 className='caja uno'>Subtitulo de ejemplo asd</h3> */}
             

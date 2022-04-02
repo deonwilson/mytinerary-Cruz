@@ -9,7 +9,7 @@ const usuariosController = require('../controllers/usuariosControllers')
 const { Route } = require('react-router-dom')
 const {obtenerCiudades, cargarCiudad, eliminarCiudad, actualizarCiudad, obtenerCuidadID} = ciudadesController
 const {obtenerItinerarios, cargarItinerario, eliminarItinerario, actualizarItinerario, obtenerItinerarioID, obtenerItinerariosPorCiudad, meGustaNoMegusta} = itinerariosController
-const {cargarComentario} =comentarioControllers
+const {cargarComentario, actualizarComentario, eliminarComentario} = comentarioControllers
 const {registrarse, iniciarSesion, cerrarSesion, verificarEmail, verificarToken} = usuariosController
 /* , signInUser, signOutUser */
 //ciudades
@@ -37,6 +37,12 @@ Router.route('/itinerarios/ciudad/:idCiudad')
 //---------------------------------------------------------------------------> comentarios de itinerarios
 Router.route('/itinerarios/comentarios')
 .post(passport.authenticate('jwt',{ session:false }), cargarComentario)
+
+Router.route('/itinerarios/comentarios/actualizar')
+.put(passport.authenticate('jwt',{ session: false }), actualizarComentario)
+
+Router.route('/itinerarios/comentarios/:id')
+.post(passport.authenticate('jwt',{ session: false }), eliminarComentario)
 
 //Usuarios
 Router.route('/autorizacion/signUp')
