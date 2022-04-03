@@ -13,7 +13,7 @@ const Itinerario = () => {
     const dispatch = useDispatch()
     //console.log("Cambie a " + cambio)
     const itinerariosActuales = useSelector(state => state.itinerarioMain.itinerario)
-    console.log(itinerariosActuales)
+    //console.log(itinerariosActuales)
     //console.log(itinerariosActuales)
     useEffect(()=>{
         dispatch(desplegarItinerario(id))

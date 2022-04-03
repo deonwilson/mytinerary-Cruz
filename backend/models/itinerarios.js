@@ -1,5 +1,5 @@
 const mongoose = require("mongoose") // alamacena los daos de las cuidades
-
+const Actividades = require("./actividades")
 const itinerariosSchema = new  mongoose.Schema({
     ciudad: {type: mongoose.Types.ObjectId, ref:'ciudades', required: true},
     itinerario:{type:Object, required:true},
@@ -8,8 +8,10 @@ const itinerariosSchema = new  mongoose.Schema({
     comentarios:[{
         comentario: {type: String},
         usuarioId:{type:mongoose.Types.ObjectId, ref:"usuarios"}
+    }],
+    actividades:[{
+        actividad:{type: mongoose.Types.ObjectId, ref: 'actividades'}
     }]
-    //actividades:[{type: mongoose.Types.ObjectId, ref: 'actividades'}]
     
     
 })

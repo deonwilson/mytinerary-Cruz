@@ -2,3 +2,32 @@
     background-color: green;
   
 }
+.dropup{
+    background-color: red;
+    display: flex!important;
+    justify-content: space-between;
+    align-items: stretch!important;
+}
+.unComentario{
+    background-color: blue;
+    width: 95%;
+    text-align: start;
+    height: 100%;
+}
+
+
+
+.dropdown-toggle{
+    height: 100% !important;
+}
+
+.dropdown-menu{
+    background-color: transparent!important;
+    border: none;
+    width: 100px;
+
+}
+.botones{
+    background-color: rgba(0, 255, 255, 0.55)!important;
+    margin-left: 0px!important;
+}

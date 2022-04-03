@@ -8,7 +8,9 @@ const Comentarios = (props) => {
     const cambio = useSelector(state => state.comentarioMain.cambio)
     const [inputText, setInputText] = useState()
     const [modificar, setModificar] = useState()
-    console.log("primero")
+    const [actualModificacion, setActualModificacion] = useState(false)
+    const [comentarioId ,setComentarioId] = useState()
+ 
  
     async function cargarUnComentario(event) {
       
@@ -21,8 +23,9 @@ const Comentarios = (props) => {
       .then(res => (res.data.response.nuevoComentario.comentarios), setInputText(""))
     
     }
-
+    
     async function modificarComentario(event) {
+     
       const comentarioUsuario = {
         comentarioId: event.target.id,
         comentario: modificar
@@ -30,17 +33,37 @@ const Comentarios = (props) => {
       //console.log(comentarioUsuario)
       await dispatch(actualizarComentario(comentarioUsuario, cambio))
       .then(res=>console.log(res))
-  
+      setComentarioId("")
+      setActualModificacion(false)
     }
     
     async function matarComentario(event) {
-      console.log(event.target.id)
+      console.log(event.target.value)
       dispatch(eliminarComentario(event.target.id, cambio))
       .then(res=>(res))
-  
+      
+    }
+    function reescribirTextoPasado(unComentId){
+   
+      setActualModificacion(!actualModificacion)
+      setComentarioId(unComentId)
+      
+     
+    }
+    function reescribirTextoActual(unComentId){
+   
+      setActualModificacion(!actualModificacion)
+      setComentarioId(unComentId)
+     
     }
     
     //console.log(comentarios)
+    function onKeyPress(event) {
+      if (event.key === "Enter") {
+        modificarComentario(event);
+        
+      }
+    }
     return ( 
             <div className='comentarios'>
                 
@@ -59,13 +82,40 @@ const Comentarios = (props) => {
                      
                       return(
                         <div className="card cardComments" key={index}>
-                          <h5 className="card-header">
-                            {coment?.usuarioId?.nombre}
-                          </h5>
-                          <div className="card-body ">
-                            <textarea type="text" className="card-text textComments" onChange={(event) => setModificar(event.target.value)} value={coment.comentario} />
-                            <button id={coment._id} onClick={modificarComentario} >Modificar</button>
-                            <button id={coment._id} onClick={matarComentario} >Eliminar</button>
+
+                          <h5 className="card-header">{coment?.usuarioId?.nombre}</h5>
+                          <div className="btn-group dropup">
+                            { !actualModificacion ?
+                            <>
+                            <p className='unComentario'>{coment.comentario}</p>
+                            <button type="comentario" className="btn btn-secondary dropdown-toggle editComentario" data-bs-toggle="dropdown" aria-expanded="false"/>
+                            <ul className="dropdown-menu">
+                              <li><button id={coment._id} onClick={()=>reescribirTextoPasado(coment._id)} >Modificar</button></li>
+                              <li><button id={coment._id} onClick={matarComentario} >Eliminar</button></li>
+                            </ul>
+                            </>
+                            :<>
+                            { comentarioId !==coment._id ?
+                            <>
+                            <p className='unComentario'>{coment.comentario}</p>
+                            <button type="comentario" className="btn btn-secondary dropdown-toggle editComentario" data-bs-toggle="dropdown" aria-expanded="false"/>
+                            <ul className="dropdown-menu">
+                              <li><button id={coment._id} onClick={()=>reescribirTextoActual(coment._id)} >Modificar</button></li>
+                              <li><button id={coment._id} onClick={matarComentario} >Eliminar</button></li>
+                            </ul>
+                            </>
+                            :
+                            <div className="ConteinerUsercomment">
+                              <textarea className="cardmodificable" type="text"onChange={(event) => setModificar(event.target.value)}
+                                onKeyPress={onKeyPress}
+                                defaultValue={coment.comentario}
+                                id={coment._id}
+                              />
+                              <button id={coment._id} onClick={modificarComentario} >editar</button>
+                            </div>
+                            }
+                            </>
+                            }
                           </div>
                         </div>
                       )

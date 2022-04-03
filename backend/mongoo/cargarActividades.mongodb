@@ -1,0 +1,73 @@
+// MongoDB Playground
+//https://docs.mongodb.com/manual/crud/
+const database = 'myTynerary';
+
+
+use(database);
+
+// The drop() command destroys all data from a collection.
+db.actividades.drop();
+// Inserta los documentos que nosotros le indiquemos.
+db.actividades.insertMany([
+        //barcelona
+        {
+            "foto":"https://i.imgur.com/v9xTgn5.jpg",
+            "descripcion": "Cala fonda"
+           
+        },
+
+        {
+            "foto":"https://i.imgur.com/ISoYjAc.jpg",
+            "descripcion": "Aiguablava"
+        },
+
+        {
+            "foto":"https://i.imgur.com/aG5NVrb.jpg",
+            "descripcion": "Sa Riera"
+        },
+        
+        {
+            "foto":"https://i.imgur.com/wKmFFrK.jpg",
+            "descripcion": "Sagrada Familia"
+        },
+
+        {
+            "foto":"https://i.imgur.com/z4kqKjj.jpg",
+            "descripcion": "Hotel Porta Fira"
+
+        },
+
+        {
+            "foto":"https://i.imgur.com/9IyPHLG.jpg",
+            "descripcion": "Gran Teatre del Liceu"
+        },
+        //Buenos Aires
+        {
+            "foto":"https://i.imgur.com/CtgR0D5.jpg",
+            "descripcion": "Franks Bar"
+        },
+
+        {
+            "foto":"https://i.imgur.com/DoOQATS.jpg",
+            "descripcion": "Tango Show"
+        },
+        {
+            "foto":"https://i.imgur.com/PmuQtkW.jpg",
+            "descripcion": "Club Museum"
+        },
+
+        {
+            "foto":"https://i.imgur.com/v6mS4Ji.jpg",
+            "descripcion": "Hollywood in Cambodia"
+        },
+
+        {
+            "foto":"https://i.imgur.com/aCejER8.jpg",
+            "descripcion": "Recoleta Cultural Centre"
+        },
+
+        {
+            "foto":"https://i.imgur.com/zfEZ6Qu.jpg",
+            "descripcion": "Palais de Glace"
+        }
+]);
