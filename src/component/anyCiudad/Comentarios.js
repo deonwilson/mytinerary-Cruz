@@ -11,7 +11,9 @@ const Comentarios = (props) => {
     const [actualModificacion, setActualModificacion] = useState(false)
     const [comentarioId ,setComentarioId] = useState()
  
- 
+    /* useEffect(()=>{
+      setActualModificacion(actualModificacion)
+    },[comentarioId, modificar]) */
     async function cargarUnComentario(event) {
       
       const comentarioUsuario = {
@@ -43,17 +45,16 @@ const Comentarios = (props) => {
       .then(res=>(res))
       
     }
-    function reescribirTextoPasado(unComentId){
    
-      setActualModificacion(!actualModificacion)
-      setComentarioId(unComentId)
-      
-     
-    }
     function reescribirTextoActual(unComentId){
-   
+      if(!actualModificacion){
       setActualModificacion(!actualModificacion)
       setComentarioId(unComentId)
+      }else{
+        setActualModificacion(actualModificacion)
+      setComentarioId(unComentId)
+      }
+      
      
     }
     
@@ -90,7 +91,7 @@ const Comentarios = (props) => {
                             <p className='unComentario'>{coment.comentario}</p>
                             <button type="comentario" className="btn btn-secondary dropdown-toggle editComentario" data-bs-toggle="dropdown" aria-expanded="false"/>
                             <ul className="dropdown-menu">
-                              <li><button id={coment._id} onClick={()=>reescribirTextoPasado(coment._id)} >Modificar</button></li>
+                              <li><button id={coment._id} onClick={()=>reescribirTextoActual(coment._id)} >Modificar</button></li>
                               <li><button id={coment._id} onClick={matarComentario} >Eliminar</button></li>
                             </ul>
                             </>
