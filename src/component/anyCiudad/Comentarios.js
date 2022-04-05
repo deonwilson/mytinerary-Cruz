@@ -10,7 +10,8 @@ const Comentarios = (props) => {
     const [modificar, setModificar] = useState()
     const [actualModificacion, setActualModificacion] = useState(false)
     const [comentarioId ,setComentarioId] = useState()
- 
+    
+    //console.log(actualModificacion)
     /* useEffect(()=>{
       setActualModificacion(actualModificacion)
     },[comentarioId, modificar]) */
@@ -73,14 +74,14 @@ const Comentarios = (props) => {
                 props?.comentariosTotales?.map((coment, index) => {
                   
                     if(coment?.usuarioId?._id !== usuario?.id ){
-                    
-                        return(<div key={index}>
-                            <h5>{coment.usuarioId.nombre}</h5>
-                            <p>{coment.comentario}</p>
-                            </div>
+                      console.log(coment.usuarioId)
+                        return(<div key={index} className="unComentario">
+                                  <p style={{color:`${coment.usuarioId.color}`}}>{coment.usuarioId.nombre}</p>
+                                  <p>{coment.comentario}</p>
+                                </div>
                         )
                     }else{
-                     
+                      console.log(coment.usuarioId.color)
                       return(
                         <div className="card cardComments" key={index}>
 

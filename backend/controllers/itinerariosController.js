@@ -81,7 +81,7 @@ const itinerariosController = {
         let error = null
         
         try{//agregue solamente esto en la linea 84 populate("autor", {fullName:1}).populate("comments.userID",{fullName:1})
-            itinerarios = await Itinerarios.find({ciudad:ciudadId}).populate("autor", {nombre:1}).populate("comentarios.usuarioId",{nombre:1}).populate("actividades.actividad", {foto:1, descripcion:1})
+            itinerarios = await Itinerarios.find({ciudad:ciudadId}).populate("autor", {nombre:1}).populate("comentarios.usuarioId",{nombre:1, color:1}).populate("actividades.actividad", {foto:1, descripcion:1})
             //console.log(itinerarios)
         }catch(err){
             error = err

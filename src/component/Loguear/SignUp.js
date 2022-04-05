@@ -16,7 +16,13 @@ const SignUp = () => {
     const mensaje = useSelector(state => state.usuarioMain.mensaje)
     /* console.log(mensaje) */
     const dispatch = useDispatch()
-    
+    const colorAletorio= ()=>{
+        const rojo = Math.floor(Math.random()*256)
+        const verde = Math.floor(Math.random()*256)
+        const azul = Math.floor(Math.random()*256)
+        
+       return `rgb(${rojo}, ${verde}, ${azul})`
+    }
     const handleSubmit = (event) => {
         event.preventDefault()
         const userData={
@@ -27,6 +33,7 @@ const SignUp = () => {
             foto:event.target[4].value,
             /* pais:event.target[5].value, */
             pais:estadoPais,
+            color:colorAletorio(),
             from:"form-Signup"
         }
         

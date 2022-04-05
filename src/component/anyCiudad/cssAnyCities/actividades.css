@@ -1,4 +1,18 @@
 .contenedor{
-    background-color: red;
-    height: 250px;
+    /* background-color: rgb(0, 255, 17); */
+    display: flex;
+    flex-direction: column;
+    width: 100%!important;
+   /*  flex-grow: 1; */
+    
+}
+.imgTitulo{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: rgb(0, 255, 17)!important;
+}
+.imagenesTitulo img{
+    background-color: azure;
+    width: 100%;
+    
 }

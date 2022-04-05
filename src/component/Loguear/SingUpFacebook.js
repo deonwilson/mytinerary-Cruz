@@ -9,6 +9,13 @@ function FacebookSignUp() {
   const dispatch = useDispatch()
   const estadoPais = useSelector(state => state.usuarioMain.unPais)
   console.log(estadoPais)
+  const colorAletorio= ()=>{
+    const rojo = Math.floor(Math.random()*256)
+    const verde = Math.floor(Math.random()*256)
+    const azul = Math.floor(Math.random()*256)
+    
+   return `rgb(${rojo}, ${verde}, ${azul})`
+}
   const responseFacebook = async (res) => {
     
     const userData={
@@ -18,6 +25,7 @@ function FacebookSignUp() {
         contrasenia:res.id,
         foto:res.picture.data.url,
         pais:estadoPais,
+        color: colorAletorio(),
         from:"facebook"
     }
     await dispatch(registrarUsuario(userData))

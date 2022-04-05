@@ -20,14 +20,22 @@ export default function comentarioReducer(state=dataInicial, action){
 }
 const MENSAJE_CARGADO = "MENSAJE_CARGADO"
 
-
+const colorAletorio= ()=>{
+    const rojo = Math.floor(Math.random()*256)
+    const verde = Math.floor(Math.random()*256)
+    const azul = Math.floor(Math.random()*256)
+    
+   return `rgb(${rojo}, ${verde}, ${azul})`
+}
 export const cargarComentario = (comentario, unCambio) => async (dispatch, getState) =>{
+    console.log(colorAletorio())
     const token = localStorage.getItem('token')
     const res = await axios.post('http://localhost:4000/api/itinerarios/comentarios', { comentario }, {
                     headers: {
                     'Authorization': `Bearer ${token}`
                     }
                 })
+        
             dispatch({type: MENSAJE_CARGADO, payload: !unCambio})
             return res
         

@@ -27,6 +27,7 @@ const validator = (req, res, next) => {
             'string.min':'El country debe contener mas de 3 caracteres',
             'string.max':"El country debe contener como maximo 20 caracteres"
         }),
+        color: joi.string(),
 
         from:joi.string()
     })

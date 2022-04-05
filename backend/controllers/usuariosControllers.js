@@ -4,6 +4,7 @@ const crypto = require('crypto')
 const nodemailer = require('nodemailer') 
 const jwt = require('jsonwebtoken')
 
+
 //funciones auxiliares 
 const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR EL EMAIL
 
@@ -41,10 +42,11 @@ const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR
 };
 
 //controladores
-const UsuariosController = {
 
+const UsuariosController = {
+    
     registrarse: async(req, res)=>{ // req.body.dataUsuario
-        const {nombre, apellido, email, contrasenia, foto, pais, from} = req.body.dataUsuario
+        const {nombre, apellido, email, contrasenia, foto, pais, from, color} = req.body.dataUsuario
         
         try{
             const usuarioExiste = await Usuarios.findOne({email})
@@ -90,6 +92,7 @@ const UsuariosController = {
                     pais,
                     uniqueString:crypto.randomBytes(15).toString('hex'),
                     emailVerificado:false,
+                    color,
                     from:[from]
                 
                 })

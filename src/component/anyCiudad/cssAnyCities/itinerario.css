@@ -76,9 +76,9 @@
     background-color: rgb(156, 7, 124);
 } */
 
-.detalleTres{
-    /* background-color: rgb(216, 182, 209); */
-}
+/* .detalleTres{
+    background-color: rgb(216, 182, 209);
+} */
 
 .sectionItinerario{
     width: 90%;
@@ -87,8 +87,18 @@
 }
 .accordionItinerario{
     width: 100%;
-    /* background-color: aqua!important; */
-    
+   /*  background-color: rgb(10, 120, 39)!important;
+     */
+}
+.accordion-body{
+    padding: 0px;
+}
+.contenedorActividadItinerario{
+    /* background-color: rgba(255, 0, 0, 0.658)!important; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: 1000px; */
 }
 @media (min-width: 500px) {
     .sectionItinerario{

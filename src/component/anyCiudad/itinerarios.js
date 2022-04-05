@@ -63,12 +63,12 @@ const Itinerario = () => {
                     if(index+2%2===0){
                         
                         return(
-                            <ComentActividadPar key={index} itinerarioId= {unItinerario._id} comentariosTotales ={unItinerario.comentarios}/>
+                            <ComentActividadPar key={index} itinerarioId= {unItinerario._id} comentariosTotales ={unItinerario.comentarios} actividades={unItinerario.actividades}/>
                         )
                     }else{
                         
                        return(
-                        <ComentActividadInpar key={index} itinerarioId= {unItinerario._id} comentariosTotales ={unItinerario.comentarios}/>
+                        <ComentActividadInpar key={index} itinerarioId= {unItinerario._id} comentariosTotales ={unItinerario.comentarios}  actividades={unItinerario.actividades}/>
                        )
                     }
                 } )
