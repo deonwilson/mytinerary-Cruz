@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom'
 import './cssAnyCities/itinerario.css'
@@ -8,23 +8,18 @@ import ComentActividadInpar from './ComentActividadInpar'
 import LikeDisLike from './LikeDislike'
 const Itinerario = () => {
     const {id} = useParams()
-    /* const [reactivo, setReactivo] =useState(true) */
     const cambio = useSelector(state => state.comentarioMain.cambio)
     const dispatch = useDispatch()
-    //console.log("Cambie a " + cambio)
     const itinerariosActuales = useSelector(state => state.itinerarioMain.itinerario)
-    //console.log(itinerariosActuales)
-    //console.log(itinerariosActuales)
-    useEffect(()=>{
-        dispatch(desplegarItinerario(id))
-        //console.log("automatico")
-    },[])
-    //console.log(cambio)
     useEffect(()=>{
         dispatch(desplegarItinerario(id))
         
-    },[cambio])
+    },[])
     
+    useEffect(()=>{
+        dispatch(desplegarItinerario(id))  
+    },[cambio])
+   
     
     return ( 
 

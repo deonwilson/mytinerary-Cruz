@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{ useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {cargarComentario, actualizarComentario, eliminarComentario} from '../../redux/comentario/comentario'
 import './cssAnyCities/comentarios.css'
@@ -24,7 +24,19 @@ const Comentarios = (props) => {
       //quiero el conjuntod de comentarios dependiendo de un id
       await dispatch(cargarComentario(comentarioUsuario, cambio))
       .then(res => (res.data.response.nuevoComentario.comentarios), setInputText(""))
+     
+      setTimeout(()=>{
+        tirarAbajo()
+        console.log("un segundo")
+      },400)
+      
+    }
     
+    const tirarAbajo =() =>{
+      const altoAnterior = document.querySelector('.soloComentarios').scrollHeight + 251
+      console.log(altoAnterior)
+      document.querySelector('.soloComentarios').scrollTo(0, altoAnterior)
+      console.log(document.querySelector('.soloComentarios'))
     }
     
     async function modificarComentario(event) {
@@ -38,6 +50,8 @@ const Comentarios = (props) => {
       .then(res=>console.log(res))
       setComentarioId("")
       setActualModificacion(false)
+
+      
     }
     
     async function matarComentario(event) {
@@ -55,7 +69,7 @@ const Comentarios = (props) => {
         setActualModificacion(actualModificacion)
       setComentarioId(unComentId)
       }
-      
+     
      
     }
     
@@ -66,45 +80,51 @@ const Comentarios = (props) => {
         
       }
     }
+    //chiches
+    console.log("asd")
+   
+    
     return ( 
             <div className='comentarios'>
-                
+                <div className='soloComentarios' id='hola'>
                 {  typeof props?.comentariosTotales !== "undefined" ?
                 
                 props?.comentariosTotales?.map((coment, index) => {
                   
                     if(coment?.usuarioId?._id !== usuario?.id ){
-                      console.log(coment.usuarioId)
+                      /* console.log(coment.usuarioId) */
                         return(<div key={index} className="unComentario">
                                   <p style={{color:`${coment.usuarioId.color}`}}>{coment.usuarioId.nombre}</p>
                                   <p>{coment.comentario}</p>
                                 </div>
                         )
                     }else{
-                      console.log(coment.usuarioId.color)
+                      /* console.log(coment.usuarioId.color) */
                       return(
-                        <div className="card cardComments" key={index}>
+                        <div className="unComentarioLogeado" key={index}>
 
-                          <h5 className="card-header">{coment?.usuarioId?.nombre}</h5>
-                          <div className="btn-group dropup">
+                          <p className='nameLogueado' style={{color:`${coment.usuarioId.color}`}}>{coment.usuarioId.nombre}</p>
+                          
                             { !actualModificacion ?
                             <>
-                            <p className='unComentario'>{coment.comentario}</p>
-                            <button type="comentario" className="btn btn-secondary dropdown-toggle editComentario" data-bs-toggle="dropdown" aria-expanded="false"/>
-                            <ul className="dropdown-menu">
-                              <li><button id={coment._id} onClick={()=>reescribirTextoActual(coment._id)} >Modificar</button></li>
-                              <li><button id={coment._id} onClick={matarComentario} >Eliminar</button></li>
-                            </ul>
+                            <div className='editComentario'> 
+                              <button className="btn btn-secondary dropdown-toggle botonOpciones" data-bs-toggle="dropdown" aria-expanded="false"/>
+                              <ul className="dropdown-menu">
+                                <li><button id={coment._id} onClick={()=>reescribirTextoActual(coment._id)} >Modificar</button></li>
+                                <li><button id={coment._id} onClick={matarComentario} >Eliminar</button></li>
+                              </ul>
+                            </div>
+                            <p className='comentarioSolo'>{coment.comentario}</p>
                             </>
                             :<>
                             { comentarioId !==coment._id ?
                             <>
-                            <p className='unComentario'>{coment.comentario}</p>
-                            <button type="comentario" className="btn btn-secondary dropdown-toggle editComentario" data-bs-toggle="dropdown" aria-expanded="false"/>
+                            <button className="btn btn-secondary dropdown-toggle botonOpciones" data-bs-toggle="dropdown" aria-expanded="false"/>
                             <ul className="dropdown-menu">
                               <li><button id={coment._id} onClick={()=>reescribirTextoActual(coment._id)} >Modificar</button></li>
                               <li><button id={coment._id} onClick={matarComentario} >Eliminar</button></li>
                             </ul>
+                            <p className='comentarioSolo'>{coment.comentario}</p>
                             </>
                             :
                             <div className="ConteinerUsercomment">
@@ -118,7 +138,7 @@ const Comentarios = (props) => {
                             }
                             </>
                             }
-                          </div>
+                          
                         </div>
                       )
                     }
@@ -128,6 +148,7 @@ const Comentarios = (props) => {
                   
                   <p>realiza el primer comentario</p>
                  }
+                </div> {/* hasta aca es comentarios */}
                 {usuario ?
                   <div className="card cardComments">
                     <div className="card-header">
@@ -135,10 +156,10 @@ const Comentarios = (props) => {
                     </div>
                     <div className="card-body ">
                       <textarea onChange={(event) => setInputText(event.target.value)} className="card-text textComments" value={inputText} />
-                      <button onClick={cargarUnComentario} className="btn btn-primary">Cargar</button>
+                      <button  onClick={cargarUnComentario} className="btn btn-primary">Cargar</button>
                     </div>
                   </div> :
-                  <h1>loguea rey comentame xD</h1>
+                  <p className='cardComments'>loguea rey comentame xD</p>
                 }
             </div> );
 }

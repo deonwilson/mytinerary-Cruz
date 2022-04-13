@@ -4,15 +4,17 @@
     flex-direction: column;
     width: 100%!important;
    /*  flex-grow: 1; */
+
     
 }
 .imgTitulo{
     margin-bottom: 20px;
     margin-top: 20px;
-    background-color: rgb(0, 255, 17)!important;
+   /*  background-color: rgb(0, 255, 17)!important; */
 }
 .imagenesTitulo img{
     background-color: azure;
     width: 100%;
+    border-radius: 10px;
     
 }
