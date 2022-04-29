@@ -11,10 +11,7 @@ const Comentarios = (props) => {
     const [actualModificacion, setActualModificacion] = useState(false)
     const [comentarioId ,setComentarioId] = useState()
     
-    //console.log(actualModificacion)
-    /* useEffect(()=>{
-      setActualModificacion(actualModificacion)
-    },[comentarioId, modificar]) */
+   
     async function cargarUnComentario(event) {
       
       const comentarioUsuario = {
@@ -151,14 +148,12 @@ const Comentarios = (props) => {
                 </div> {/* hasta aca es comentarios */}
                 {usuario ?
                   <div className="card cardComments">
-                    <div className="card-header">
-                      DEJANOS TU COMENTARIO
-                    </div>
-                    <div className="card-body ">
+                    
                       <textarea onChange={(event) => setInputText(event.target.value)} className="card-text textComments" value={inputText} />
-                      <button  onClick={cargarUnComentario} className="btn btn-primary">Cargar</button>
-                    </div>
-                  </div> :
+                      <button  onClick={cargarUnComentario} className="enviar" style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/send.png`})` }}></button>
+      
+                  </div> 
+                  :
                   <p className='cardComments'>loguea rey comentame xD</p>
                 }
             </div> );

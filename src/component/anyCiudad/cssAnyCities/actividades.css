@@ -10,11 +10,47 @@
 .imgTitulo{
     margin-bottom: 20px;
     margin-top: 20px;
-   /*  background-color: rgb(0, 255, 17)!important; */
+  /*   background-color: rgb(0, 255, 17)!important; */
+    
 }
 .imagenesTitulo img{
-    background-color: azure;
-    width: 100%;
+   /*  background-color: azure; */
+    width: 80%;
+    
     border-radius: 10px;
     
+}
+
+@media (min-width: 800px) {
+
+    .imagenesTitulo{
+       /*  background-color: violet; */
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        
+    }
+    .imgTitulo{
+        width: 200px;
+        /* height: 132px; */
+    }
+    .imagenesTitulo img{
+        /* background-color: azure; */
+        width: 200px;
+        height: 132px;
+        border-radius: 10px;
+        
+    }
+}
+@media (min-width: 1200px) {
+    .imgTitulo{
+        width: 300px;
+    }
+    .imagenesTitulo img{
+        /* background-color: azure; */
+        width: 300px;
+        height: 250px;
+        border-radius: 10px;
+        
+    }
 }

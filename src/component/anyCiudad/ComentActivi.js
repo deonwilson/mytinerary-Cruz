@@ -11,8 +11,8 @@ const ComentActividadPar = (props) => {
         </h2>
         <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
           <div className="accordion-body contenedorActividadItinerario">
-          <Actividades actividades={props.actividades} />
-          <Comentarios itinerarioId= {props.itinerarioId} comentariosTotales={props.comentariosTotales}/>
+            <Actividades actividades={props.actividades} />
+            <Comentarios itinerarioId= {props.itinerarioId} comentariosTotales={props.comentariosTotales}/>
           </div>
         </div>
       </div>
