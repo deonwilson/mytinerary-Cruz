@@ -2,13 +2,16 @@
     background-color: red!important;
 } */
 .comentarios{
-    background-color: rgba(2, 243, 230, 0);
-
-    
+    background-color: rgba(74, 88, 88, 0.338);
+   /*  width: 70%; */
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     padding-right: 5px;
+    padding-top: 20px;
     /* background-color: red; */
+    margin-top: 20px;
+    margin-bottom: 20px!important;
     
 }
 .unComentario{
@@ -129,14 +132,10 @@
     outline: none;
     color: rgb(0, 0, 0);
     max-height: 100px;
+    resize: none;
 }
 .textComments{
-    /* background-color: red; */
-   
     overflow-y: scroll;
-    
-   
-    
 }
 
 .textComments::-webkit-scrollbar{
@@ -168,4 +167,88 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
+}
+
+.ConteinerUsercomment{
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.cardmodificable::-webkit-scrollbar{
+    width: 5px;
+    background-color: rgba(59, 52, 52, 0.966);
+    background-color: transparent;
+   
+  }
+.cardmodificable::-webkit-scrollbar-thumb{
+    background-color: rgba(48, 152, 160, 0.589);
+    border-radius: 5px;
+    height: 50%;
+  }
+.cardmodificable{
+    background-color: rgba(0, 213, 255, 0.224);
+    flex-grow: 1;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    height: 50px;
+    resize: none;
+}
+.buttonModify{
+    height: 50px;
+    width: 60px;
+    background-color: rgba(77, 108, 113, 0.747);
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+}
+.buttonModify:hover{
+    height: 50px;
+    width: 60px;
+    background-color: rgba(7, 22, 24, 0.47);
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+}
+.dropdown-menu{
+   
+    /* background: rgba(0, 0, 0, 0.619); */
+    background: transparent;
+  
+    border: none;
+    
+}
+.dropdown-menu li {
+    background-color: transparent;
+    border: none;
+    
+}
+.dropdown-menu li button{
+    background-color: rgba(17, 164, 162, 0.635);
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.dropdown-menu li button:hover{
+    background-color: rgb(5, 106, 134);
+    color: #fff;
+}
+@media (min-width: 500px) {
+    .comentarios{
+       /*  background-color: red; */
+        width: 80%;
+        margin: auto;
+    }
+}
+
+@media (min-width: 1000px) {
+    .comentarios{
+      /*   background-color: red; */
+        width: 1000px;
+        margin: auto;
+    }
 }

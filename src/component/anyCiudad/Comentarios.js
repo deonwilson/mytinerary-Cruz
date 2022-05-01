@@ -130,7 +130,7 @@ const Comentarios = (props) => {
                                 defaultValue={coment.comentario}
                                 id={coment._id}
                               />
-                              <button id={coment._id} onClick={modificarComentario} >editar</button>
+                              <button id={coment._id} onClick={modificarComentario} className="buttonModify" >Modify</button>
                             </div>
                             }
                             </>
@@ -143,7 +143,7 @@ const Comentarios = (props) => {
                     })
                   :
                   
-                  <p>realiza el primer comentario</p>
+                  <p>Comments</p>
                  }
                 </div> {/* hasta aca es comentarios */}
                 {usuario ?
@@ -154,7 +154,12 @@ const Comentarios = (props) => {
       
                   </div> 
                   :
-                  <p className='cardComments'>loguea rey comentame xD</p>
+                  <div className="card cardComments">
+                    
+                      <textarea className="card-text textComments"  />
+                      <button   className="enviar" style={{ backgroundImage: `url(${process.env.PUBLIC_URL+ `/send.png`})` }}></button>
+      
+                  </div>
                 }
             </div> );
 }
