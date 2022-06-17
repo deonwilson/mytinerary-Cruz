@@ -5,10 +5,12 @@ const extractJwt = require('passport-jwt').ExtractJwt
  
 const Usuarios = require('../models/usuarios')
 
-module.exports = passport.use(new jwtStrategy({
+module.exports = passport.use(new jwtStrategy(
+    {
     jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.SECRET_KEY
-},(jwt_payload,done)=>{
+    },
+    (jwt_payload,done)=>{
     
     Usuarios.findOne({_id:jwt_payload.id})
     
@@ -30,4 +32,5 @@ module.exports = passport.use(new jwtStrategy({
         return done(err,false)
     })
 
-}))
+    }
+))

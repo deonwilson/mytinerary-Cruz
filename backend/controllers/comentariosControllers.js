@@ -8,7 +8,10 @@ const comentarioControllers = {
         const usuario = req.user._id
         
         try {
-            const nuevoComentario = await Itinerario.findOneAndUpdate({_id:itinerarioId}, {$push: {comentarios: {comentario: comentario, usuarioId: usuario}}}, {new: true}).populate("autor", {nombre:1}).populate("comentarios.usuarioId", {nombre:1, color:1})
+            const nuevoComentario = await Itinerario.findOneAndUpdate({_id:itinerarioId}, 
+                {$push: {comentarios: {comentario: comentario, usuarioId: usuario}}}, {new: true})
+                .populate("autor", {nombre:1})
+                .populate("comentarios.usuarioId", {nombre:1, color:1})
             res.json({ success: true, response:{nuevoComentario}, message:"gracias por dejarnos tu comentario" })
 
         }
